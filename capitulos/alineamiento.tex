@@ -1,0 +1,472 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\chapter{Alineamiento}
+
+\section{Modo de alineamiento Flat}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=1\textwidth]{Alignment/FlatAlignment.png}
+    \caption{Pendiente.}
+    %\label{fig:frontDA1000}
+\end{figure}
+
+
+\begin{longtblr}[
+    caption={Parámetros de configuración},
+    label={tab:parameters},
+]{
+    width=\textwidth,
+    colspec={|Q[c]|X|Q[c]|},
+    hlines,
+}
+
+\SetRow{bg=gray9}
+\textbf{Parámetro} &
+\textbf{Descripción} &
+\textbf{Tipo .NET} \\
+
+%===========================================================
+% Alignment
+%===========================================================
+\SetRow{bg=SkyBlue}
+\SetCell[c=3]{c}
+Alignment \\
+
+mainStageNumberX &
+Número del eje principal utilizado para el movimiento en X. &
+UInt16 \\
+
+mainStageNumberY &
+Número del eje principal utilizado para el movimiento en Y. &
+UInt16 \\
+
+subStageNumberXY & 
+Número del sub-eje utilizado para el movimiento en XY. & 
+UInt16 \\
+
+subAngleX & 
+Ángulo del sub-eje para la alineación en X. & 
+Double \\
+
+subAngleY & 
+Ángulo del sub-eje para la alineación en Y. & 
+Double \\
+
+%===========================================================
+% Sensor
+%===========================================================
+\SetRow{bg=SweetSalmon}
+\SetCell[c=3]{c}
+Sensor \\
+
+pmCh & Canal del medidor de potencia utilizado durante la alineación. & UInt16 \\
+
+analogCh & Canal de entrada analógica utilizado para la medición. & UInt16 \\
+
+pmAutoRangeUpOn & Habilita el incremento automático del rango del medidor de potencia. & Boolean \\
+
+pmInitRangeSettingOn & Habilita el uso de un rango inicial para el medidor de potencia. & Boolean \\
+
+pmInitRange & Valor del rango inicial del medidor de potencia. & Int16 \\
+
+%===========================================================
+% Threshold
+%===========================================================
+\SetRow{bg=Periwinkle}
+\SetCell[c=3]{c}
+Threshold \\
+
+fieldSearchThreshold & Umbral utilizado durante la búsqueda de campo. & Double \\
+
+peakSearchThreshold & Umbral utilizado durante la búsqueda del pico de señal. & Double \\
+
+%===========================================================
+% Search
+%===========================================================
+\SetRow{bg=MutedTeal}
+\SetCell[c=3]{c}
+Search \\
+
+searchRangeX & Rango de búsqueda en la dirección X. & Double \\
+
+searchRangeY & Rango de búsqueda en la dirección Y. & Double \\
+
+fieldSearchPitchX & Paso de exploración en X durante la búsqueda de campo. & Double \\
+
+fieldSearchPitchY & Paso de exploración en Y durante la búsqueda de campo. & Double \\
+
+fieldSearchFirstPitchX & Primer paso de exploración en X durante la búsqueda de campo. & Double \\
+
+fieldSearchSpeedX & Velocidad de exploración en X durante la búsqueda de campo. & Double \\
+
+fieldSearchSpeedY & Velocidad de exploración en Y durante la búsqueda de campo. & Double \\
+
+peakSearchSpeedX & Velocidad de búsqueda del pico en X. & Double \\
+
+peakSearchSpeedY & Velocidad de búsqueda del pico en Y. & Double \\
+
+smoothingRangeX & Ventana de suavizado aplicada a los datos en X. & UInt32 \\
+
+smoothingRangeY & Ventana de suavizado aplicada a los datos en Y. & UInt32 \\
+
+centroidThresholdX & Umbral para el cálculo del centroide en X. & Double \\
+
+centroidThresholdY & Umbral para el cálculo del centroide en Y. & Double \\
+
+%===========================================================
+% Judge
+%===========================================================
+\SetRow{bg=ApricotCream}
+\SetCell[c=3]{c}
+Judge \\
+
+convergentRangeX & Rango de convergencia permitido en X. & Double \\
+
+convergentRangeY & Rango de convergencia permitido en Y. & Double \\
+
+comparisonCount & Número de comparaciones realizadas para verificar la convergencia. & UInt16 \\
+
+maxRepeatCount & Número máximo de repeticiones permitidas durante el proceso de alineación. & UInt16 \\
+
+\end{longtblr}
+
+
+
+
+
+
+
+
+
+
+% \begin{longtblr}[
+%     caption={Parámetros de configuración},
+%     label={tab:parameters},
+% ]{
+%     width=\textwidth,
+%     colspec={|Q[c]|X|Q[c]|},
+%     hlines,
+% }
+
+% \SetRow{bg=gray9}
+% \textbf{Parámetro} &
+% \textbf{Descripción} &
+% \textbf{Tipo .NET} \\
+
+% Parámetro &
+% \SetCell[c=2]{c}
+% Texto de ejemplo &
+% \\
+
+% mainStageNumberX &
+% Número del eje principal utilizado para el movimiento en X. &
+% UInt16 \\
+
+% mainStageNumberY &
+% Número del eje principal utilizado para el movimiento en Y. &
+% UInt16 \\
+
+% maxRepeatCount &
+% Número máximo de repeticiones permitidas durante el proceso de alineación. &
+% UInt16 \\
+
+% mainStageNumberX & Número del eje principal utilizado para el movimiento en X. & UInt16 \\
+
+% mainStageNumberY & Número del eje principal utilizado para el movimiento en Y. & UInt16 \\
+
+% subStageNumberXY & Número del sub-eje utilizado para el movimiento en XY. & UInt16 \\
+
+% subAngleX & Ángulo del sub-eje para la alineación en X. & Double \\
+
+% subAngleY & Ángulo del sub-eje para la alineación en Y. & Double \\
+
+% pmCh & Canal del medidor de potencia utilizado durante la alineación. & UInt16 \\
+
+% analogCh & Canal de entrada analógica utilizado para la medición. & UInt16 \\
+
+% pmAutoRangeUpOn & Habilita el incremento automático del rango del medidor de potencia. & Boolean \\
+
+% pmInitRangeSettingOn & Habilita el uso de un rango inicial para el medidor de potencia. & Boolean \\
+
+% pmInitRange & Valor del rango inicial del medidor de potencia. & Int16 \\
+
+% fieldSearchThreshold & Umbral utilizado durante la búsqueda de campo. & Double \\
+
+% peakSearchThreshold & Umbral utilizado durante la búsqueda del pico de señal. & Double \\
+
+% searchRangeX & Rango de búsqueda en la dirección X. & Double \\
+
+% searchRangeY & Rango de búsqueda en la dirección Y. & Double \\
+
+% fieldSearchPitchX & Paso de exploración en X durante la búsqueda de campo. & Double \\
+
+% fieldSearchPitchY & Paso de exploración en Y durante la búsqueda de campo. & Double \\
+
+% fieldSearchFirstPitchX & Primer paso de exploración en X durante la búsqueda de campo. & Double \\
+
+% fieldSearchSpeedX & Velocidad de exploración en X durante la búsqueda de campo. & Double \\
+
+% fieldSearchSpeedY & Velocidad de exploración en Y durante la búsqueda de campo. & Double \\
+
+% peakSearchSpeedX & Velocidad de búsqueda del pico en X. & Double \\
+
+% peakSearchSpeedY & Velocidad de búsqueda del pico en Y. & Double \\
+
+% smoothingRangeX & Ventana de suavizado aplicada a los datos en X. & UInt32 \\
+
+% smoothingRangeY & Ventana de suavizado aplicada a los datos en Y. & UInt32 \\
+
+% centroidThresholdX & Umbral para el cálculo del centroide en X. & Double \\
+
+% centroidThresholdY & Umbral para el cálculo del centroide en Y. & Double \\
+
+% convergentRangeX & Rango de convergencia permitido en X. & Double \\
+
+% convergentRangeY & Rango de convergencia permitido en Y. & Double \\
+
+% comparisonCount & Número de comparaciones realizadas para verificar la convergencia. & UInt16 \\
+
+% maxRepeatCount & Número máximo de repeticiones permitidas durante el proceso de alineación. & UInt16 \\
+
+
+% \end{longtblr}
+
+% \begin{longtblr}[H]
+% \centering
+% \resizebox{\textwidth}{!}{%
+% \begin{tabular}{|c|p{8cm}|c|}
+% \hline
+%  Parametro & Descripción & Tipo .NET \\
+% \hline
+% mainStageNumberX & Número del eje principal utilizado para el movimiento en X. & UInt16 \\
+% \hline
+% mainStageNumberY & Número del eje principal utilizado para el movimiento en Y. & UInt16 \\
+% \hline
+% subStageNumberXY & Número del sub-eje utilizado para el movimiento en XY. & UInt16 \\
+% \hline
+% subAngleX & Ángulo del sub-eje para la alineación en X. & Double \\
+% \hline
+% subAngleY & Ángulo del sub-eje para la alineación en Y. & Double \\
+% \hline
+% pmCh & Canal del medidor de potencia utilizado durante la alineación. & UInt16 \\
+% \hline
+% analogCh & Canal de entrada analógica utilizado para la medición. & UInt16 \\
+% \hline
+% pmAutoRangeUpOn & Habilita el incremento automático del rango del medidor de potencia. & Boolean \\
+% \hline
+% pmInitRangeSettingOn & Habilita el uso de un rango inicial para el medidor de potencia. & Boolean \\
+% \hline
+% pmInitRange & Valor del rango inicial del medidor de potencia. & Int16 \\
+% \hline
+% fieldSearchThreshold & Umbral utilizado durante la búsqueda de campo. & Double \\
+% \hline
+% peakSearchThreshold & Umbral utilizado durante la búsqueda del pico de señal. & Double \\
+% \hline
+% searchRangeX & Rango de búsqueda en la dirección X. & Double \\
+% \hline
+% searchRangeY & Rango de búsqueda en la dirección Y. & Double \\
+% \hline
+% fieldSearchPitchX & Paso de exploración en X durante la búsqueda de campo. & Double \\
+% \hline
+% fieldSearchPitchY & Paso de exploración en Y durante la búsqueda de campo. & Double \\
+% \hline
+% fieldSearchFirstPitchX & Primer paso de exploración en X durante la búsqueda de campo. & Double \\
+% \hline
+% fieldSearchSpeedX & Velocidad de exploración en X durante la búsqueda de campo. & Double \\
+% \hline
+% fieldSearchSpeedY & Velocidad de exploración en Y durante la búsqueda de campo. & Double \\
+% \hline
+% peakSearchSpeedX & Velocidad de búsqueda del pico en X. & Double \\
+% \hline
+% peakSearchSpeedY & Velocidad de búsqueda del pico en Y. & Double \\
+% \hline
+% smoothingRangeX & Ventana de suavizado aplicada a los datos en X. & UInt32 \\
+% \hline
+% smoothingRangeY & Ventana de suavizado aplicada a los datos en Y. & UInt32 \\
+% \hline
+% centroidThresholdX & Umbral para el cálculo del centroide en X. & Double \\
+% \hline
+% centroidThresholdY & Umbral para el cálculo del centroide en Y. & Double \\
+% \hline
+% convergentRangeX & Rango de convergencia permitido en X. & Double \\
+% \hline
+% convergentRangeY & Rango de convergencia permitido en Y. & Double \\
+% \hline
+% comparisonCount & Número de comparaciones realizadas para verificar la convergencia. & UInt16 \\
+% \hline
+% maxRepeatCount & Número máximo de repeticiones permitidas durante el proceso de alineación. & UInt16 \\
+% \hline
+% \end{tabular}
+% } % End Resizebox
+% \end{longtblr}
+
+
+
+
+
+% \begin{table}[H]
+% \centering
+% \resizebox{\textwidth}{!}{%
+% \begin{tabular}{|c|p{8cm}|c|}
+% \hline
+%  Parametro & Descripción & Tipo .NET \\
+% \hline
+% mainStageNumberX & Número del eje principal utilizado para el movimiento en X. & UInt16 \\
+% \hline
+% mainStageNumberY & Número del eje principal utilizado para el movimiento en Y. & UInt16 \\
+% \hline
+% subStageNumberXY & Número del sub-eje utilizado para el movimiento en XY. & UInt16 \\
+% \hline
+% subAngleX & Ángulo del sub-eje para la alineación en X. & Double \\
+% \hline
+% subAngleY & Ángulo del sub-eje para la alineación en Y. & Double \\
+% \hline
+% pmCh & Canal del medidor de potencia utilizado durante la alineación. & UInt16 \\
+% \hline
+% analogCh & Canal de entrada analógica utilizado para la medición. & UInt16 \\
+% \hline
+% pmAutoRangeUpOn & Habilita el incremento automático del rango del medidor de potencia. & Boolean \\
+% \hline
+% pmInitRangeSettingOn & Habilita el uso de un rango inicial para el medidor de potencia. & Boolean \\
+% \hline
+% pmInitRange & Valor del rango inicial del medidor de potencia. & Int16 \\
+% \hline
+% fieldSearchThreshold & Umbral utilizado durante la búsqueda de campo. & Double \\
+% \hline
+% peakSearchThreshold & Umbral utilizado durante la búsqueda del pico de señal. & Double \\
+% \hline
+% searchRangeX & Rango de búsqueda en la dirección X. & Double \\
+% \hline
+% searchRangeY & Rango de búsqueda en la dirección Y. & Double \\
+% \hline
+% fieldSearchPitchX & Paso de exploración en X durante la búsqueda de campo. & Double \\
+% \hline
+% fieldSearchPitchY & Paso de exploración en Y durante la búsqueda de campo. & Double \\
+% \hline
+% fieldSearchFirstPitchX & Primer paso de exploración en X durante la búsqueda de campo. & Double \\
+% \hline
+% fieldSearchSpeedX & Velocidad de exploración en X durante la búsqueda de campo. & Double \\
+% \hline
+% fieldSearchSpeedY & Velocidad de exploración en Y durante la búsqueda de campo. & Double \\
+% \hline
+% peakSearchSpeedX & Velocidad de búsqueda del pico en X. & Double \\
+% \hline
+% peakSearchSpeedY & Velocidad de búsqueda del pico en Y. & Double \\
+% \hline
+% smoothingRangeX & Ventana de suavizado aplicada a los datos en X. & UInt32 \\
+% \hline
+% smoothingRangeY & Ventana de suavizado aplicada a los datos en Y. & UInt32 \\
+% \hline
+% centroidThresholdX & Umbral para el cálculo del centroide en X. & Double \\
+% \hline
+% centroidThresholdY & Umbral para el cálculo del centroide en Y. & Double \\
+% \hline
+% convergentRangeX & Rango de convergencia permitido en X. & Double \\
+% \hline
+% convergentRangeY & Rango de convergencia permitido en Y. & Double \\
+% \hline
+% comparisonCount & Número de comparaciones realizadas para verificar la convergencia. & UInt16 \\
+% \hline
+% maxRepeatCount & Número máximo de repeticiones permitidas durante el proceso de alineación. & UInt16 \\
+% \hline
+% \end{tabular}
+% } % End Resizebox
+% \end{table}
+
+
+% % Hola
+
+% \begin{table}[H]
+% \centering
+% \resizebox{\textwidth}{!}{%
+% \begin{tabularx}{\textwidth}{|c|X|c|}
+% \hline
+% \textbf{Parámetro} & \textbf{Descripción} & \textbf{Tipo .NET} \\
+% \hline
+% mainStageNumberX & Número del eje principal utilizado para el movimiento en X. & UInt16 \\
+% \hline
+% mainStageNumberY & Número del eje principal utilizado para el movimiento en Y. & UInt16 \\
+% \hline
+% subStageNumberXY & Número del sub-eje utilizado para el movimiento en XY. & UInt16 \\
+% \hline
+% subAngleX & Ángulo del sub-eje para la alineación en X. & Double \\
+% \hline
+% subAngleY & Ángulo del sub-eje para la alineación en Y. & Double \\
+% \hline
+% pmCh & Canal del medidor de potencia utilizado durante la alineación. & UInt16 \\
+% \hline
+% analogCh & Canal de entrada analógica utilizado para la medición. & UInt16 \\
+% \hline
+% pmAutoRangeUpOn & Habilita el incremento automático del rango del medidor de potencia. & Boolean \\
+% \hline
+% pmInitRangeSettingOn & Habilita el uso de un rango inicial para el medidor de potencia. & Boolean \\
+% \hline
+% pmInitRange & Valor del rango inicial del medidor de potencia. & Int16 \\
+% \hline
+% fieldSearchThreshold & Umbral utilizado durante la búsqueda de campo. & Double \\
+% \hline
+% peakSearchThreshold & Umbral utilizado durante la búsqueda del pico de señal. & Double \\
+% \hline
+% searchRangeX & Rango de búsqueda en la dirección X. & Double \\
+% \hline
+% searchRangeY & Rango de búsqueda en la dirección Y. & Double \\
+% \hline
+% fieldSearchPitchX & Paso de exploración en X durante la búsqueda de campo. & Double \\
+% \hline
+% fieldSearchPitchY & Paso de exploración en Y durante la búsqueda de campo. & Double \\
+% \hline
+% fieldSearchFirstPitchX & Primer paso de exploración en X durante la búsqueda de campo. & Double \\
+% \hline
+% fieldSearchSpeedX & Velocidad de exploración en X durante la búsqueda de campo. & Double \\
+% \hline
+% fieldSearchSpeedY & Velocidad de exploración en Y durante la búsqueda de campo. & Double \\
+% \hline
+% peakSearchSpeedX & Velocidad de búsqueda del pico en X. & Double \\
+% \hline
+% peakSearchSpeedY & Velocidad de búsqueda del pico en Y. & Double \\
+% \hline
+% smoothingRangeX & Ventana de suavizado aplicada a los datos en X. & UInt32 \\
+% \hline
+% smoothingRangeY & Ventana de suavizado aplicada a los datos en Y. & UInt32 \\
+% \hline
+% centroidThresholdX & Umbral para el cálculo del centroide en X. & Double \\
+% \hline
+% centroidThresholdY & Umbral para el cálculo del centroide en Y. & Double \\
+% \hline
+% convergentRangeX & Rango de convergencia permitido en X. & Double \\
+% \hline
+% convergentRangeY & Rango de convergencia permitido en Y. & Double \\
+% \hline
+% comparisonCount & Número de comparaciones realizadas para verificar la convergencia. & UInt16 \\
+% \hline
+% maxRepeatCount & Número máximo de repeticiones permitidas durante el proceso de alineación. & UInt16 \\
+% \hline
+% \end{tabularx}
+% } % End Resizebox
+% \end{table}
+
+
+
+% \begin{table}[H]
+% \centering
+% \begin{tabularx}{\textwidth}{|c|X|c|}
+% \hline
+%  Parametro & Descripción & Tipo .NET \\
+% \hline
+% %--------------------------------------
+% mainStageNumberX &
+% Pendiente &
+% UInt16 \\
+% \hline
+% \end{tabularx}
+% \end{table}
+
+
+
+\end{document}
+
+
+
