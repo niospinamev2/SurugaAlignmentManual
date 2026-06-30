@@ -1,0 +1,35 @@
+\documentclass[12pt]{report}
+
+\usepackage[a4paper,
+            left=3cm,
+            right=2cm,
+            top=2.5cm,
+            bottom=2.5cm]{geometry}
+
+\input{preambulo}
+
+\usepackage{subfiles}
+
+\begin{document}
+
+\title{Título del TFM}
+\author{Nombre del autor}
+\date{\today}
+
+\maketitle
+
+\tableofcontents
+
+\subfile{capitulos/introduccion}
+\subfile{capitulos/estado_del_arte}
+\subfile{capitulos/metodologia}
+\subfile{capitulos/resultados}
+\subfile{capitulos/conclusiones}
+
+\appendix
+\subfile{capitulos/api_suruga_seiki}
+
+\bibliographystyle{plain}
+\bibliography{referencias}
+
+\end{document}

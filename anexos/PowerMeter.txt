@@ -1,0 +1,46 @@
+====================================================================================================
+SurugaSeiki.Motion.PowerMeter
+====================================================================================================
+
+Constructores:
+  PowerMeter()
+
+Metodos:
+  Double GetPower(UInt16 ch)
+  AllowedRange GetRange(UInt16 ch)
+  Double GetWavelength(UInt16 ch)
+  ErrorCode SetRange(UInt16 ch, AllowedRange range)
+  ErrorCode SetWaveLength(UInt16 ch, Double waveLength)
+  ErrorCode PauseCommunication(UInt16 ch, Boolean isEnabled)
+
+Tipos anidados/enums:
+  SurugaSeiki.Motion.PowerMeter+ErrorCode
+  SurugaSeiki.Motion.PowerMeter+AllowedRange
+
+====================================================================================================
+SurugaSeiki.Motion.PowerMeter+AllowedRange
+====================================================================================================
+
+Campos:
+  Int16 value__
+  static AllowedRange Minus60
+  static AllowedRange Minus50
+  static AllowedRange Minus40
+  static AllowedRange Minus30
+  static AllowedRange Minus20
+  static AllowedRange Minus10
+  static AllowedRange Zero
+  static AllowedRange Plus10
+  static AllowedRange Plus20
+  static AllowedRange Auto
+  static AllowedRange Invalid
+
+====================================================================================================
+SurugaSeiki.Motion.PowerMeter+ErrorCode
+====================================================================================================
+
+Campos:
+  Int32 value__
+  static ErrorCode None
+  static ErrorCode ChannelOutOfRange
+  static ErrorCode Invalid

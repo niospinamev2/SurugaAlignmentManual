@@ -1,0 +1,256 @@
+﻿====================================================================================================
+SurugaSeiki.Motion.System
+====================================================================================================
+
+Propiedades:
+  UInt16 MaxAxisStageNumber (get/set)
+  UInt16 MaxAnalogInputChNumber (get/set)
+  UInt16 MaxAlignmentNumber (get/set)
+  UInt16 MaxAngleAdjustmentNumber (get/set)
+  UInt16 MaxDInChNumber (get/set)
+  UInt16 MaxDOutChNumber (get/set)
+  UInt16 MaxAnalogOutputChNumber (get/set)
+  UInt16 MaxPowerMeterChNumber (get/set)
+  System Instance (get)
+  Boolean Connected (get)
+  String DllVersion (get)
+  String SystemVersion (get)
+
+Metodos:
+  Boolean IsError()
+  ErrorCode GetCurrentErrorCode()
+  Boolean IsEmergencyAsserted()
+  Void SetAddress(String addr)
+  Void DisconnectAds()
+
+Campos:
+  static UInt16 MaxProfileNumber
+  static UInt32 ProfileDataPacketMaxDataNumber
+
+Tipos anidados/enums:
+  SurugaSeiki.Motion.System+ErrorCode
+
+====================================================================================================
+SurugaSeiki.Motion.System+AlignmentChParam
+====================================================================================================
+
+====================================================================================================
+SurugaSeiki.Motion.System+AlignmentCommand
+====================================================================================================
+
+Campos:
+  Int32 value__
+  static AlignmentCommand Null
+  static AlignmentCommand StartSingle
+  static AlignmentCommand StartFlat
+  static AlignmentCommand StartFocus
+  static AlignmentCommand StartTwoChRotation
+  static AlignmentCommand StartMMFRotation
+  static AlignmentCommand Stop
+  static AlignmentCommand SetSingle
+  static AlignmentCommand SetFlat
+  static AlignmentCommand SetFocus
+  static AlignmentCommand SetTwoChRotation
+  static AlignmentCommand SetMMFRotation
+  static AlignmentCommand StartLoopBack
+  static AlignmentCommand SetLoopBack
+
+====================================================================================================
+SurugaSeiki.Motion.System+AlignmentMainAxisParam
+====================================================================================================
+
+====================================================================================================
+SurugaSeiki.Motion.System+AlignmentParam
+====================================================================================================
+
+====================================================================================================
+SurugaSeiki.Motion.System+AlignmentPowerMeterInfo
+====================================================================================================
+
+====================================================================================================
+SurugaSeiki.Motion.System+AlignmentStatusInfo
+====================================================================================================
+
+====================================================================================================
+SurugaSeiki.Motion.System+AnalogOutputControlCommand
+====================================================================================================
+
+Campos:
+  Int32 value__
+  static AnalogOutputControlCommand Null
+  static AnalogOutputControlCommand SetAnalogOutput
+
+====================================================================================================
+SurugaSeiki.Motion.System+AngleAdjustmentCommand
+====================================================================================================
+
+Campos:
+  Int32 value__
+  static AngleAdjustmentCommand Null
+  static AngleAdjustmentCommand SetParameter
+  static AngleAdjustmentCommand Start
+  static AngleAdjustmentCommand Stop
+
+====================================================================================================
+SurugaSeiki.Motion.System+AngleAdjustmentParam
+====================================================================================================
+
+====================================================================================================
+SurugaSeiki.Motion.System+AngleAdjustmentStatusInfo
+====================================================================================================
+
+====================================================================================================
+SurugaSeiki.Motion.System+Axis2DCommand
+====================================================================================================
+
+Campos:
+  Int32 value__
+  static Axis2DCommand Null
+  static Axis2DCommand MoveAbsolute
+  static Axis2DCommand MoveRelative
+  static Axis2DCommand MoveAbsoluteAngle
+  static Axis2DCommand MoveRelativeAngle
+  static Axis2DCommand Stop
+  static Axis2DCommand SetCompositionSpeed
+  static Axis2DCommand SetAccelRate
+  static Axis2DCommand SetDecelRate
+  static Axis2DCommand SetStageNumber
+
+====================================================================================================
+SurugaSeiki.Motion.System+Axis2DParam
+====================================================================================================
+
+====================================================================================================
+SurugaSeiki.Motion.System+AxisCommandStruct
+====================================================================================================
+
+====================================================================================================
+SurugaSeiki.Motion.System+AxisComponentCommand
+====================================================================================================
+
+Campos:
+  Int32 value__
+  static AxisComponentCommand Null
+  static AxisComponentCommand MoveAbsolute
+  static AxisComponentCommand MoveRelative
+  static AxisComponentCommand ReturnOrigin
+  static AxisComponentCommand Stop
+  static AxisComponentCommand TurnOnServo
+  static AxisComponentCommand TurnOffServo
+  static AxisComponentCommand ResetError
+  static AxisComponentCommand SetMaxSpeed
+  static AxisComponentCommand SetAccelRate
+  static AxisComponentCommand SetDecelRate
+  static AxisComponentCommand SetSineMotion
+  static AxisComponentCommand SetFulcrumSpan
+  static AxisComponentCommand SetEncoderStepLength
+  static AxisComponentCommand SetCWTorquelimit
+  static AxisComponentCommand SetCCWTorquelimit
+
+====================================================================================================
+SurugaSeiki.Motion.System+AxisControlType
+====================================================================================================
+
+Campos:
+  Int32 value__
+  static AxisControlType AxisComponents
+  static AxisControlType Axis2D
+  static AxisControlType Axis3D
+
+====================================================================================================
+SurugaSeiki.Motion.System+AxisMethod
+====================================================================================================
+
+Campos:
+  Int32 value__
+  static AxisMethod Null
+  static AxisMethod MoveAbsolute
+  static AxisMethod MoveRelative
+  static AxisMethod MoveAbsoluteAngle
+  static AxisMethod MoveRelativeAngle
+  static AxisMethod Stop
+  static AxisMethod SetCompositionSpeed
+  static AxisMethod SetAccelRate
+  static AxisMethod SetDecelRate
+  static AxisMethod SetStageNumber
+  static AxisMethod SetSubStageNumber
+  static AxisMethod SetRotationCenter
+  static AxisMethod SetFixedAxisOffset
+
+====================================================================================================
+SurugaSeiki.Motion.System+AxisStatus
+====================================================================================================
+
+====================================================================================================
+SurugaSeiki.Motion.System+DOutControlCommand
+====================================================================================================
+
+Campos:
+  Int32 value__
+  static DOutControlCommand Null
+  static DOutControlCommand SetDout
+  static DOutControlCommand SetPulseOutput
+
+====================================================================================================
+SurugaSeiki.Motion.System+DeviceControlCommand
+====================================================================================================
+
+Campos:
+  Int32 value__
+  static DeviceControlCommand Null
+  static DeviceControlCommand SetWaveLength
+
+====================================================================================================
+SurugaSeiki.Motion.System+DeviceStatusMap
+====================================================================================================
+
+====================================================================================================
+SurugaSeiki.Motion.System+ErrorCode
+====================================================================================================
+
+Campos:
+  Int32 value__
+  static ErrorCode NoError
+  static ErrorCode ConnectionLost
+  static ErrorCode VersionError
+  static ErrorCode MaxNumberOfErrorCode
+
+====================================================================================================
+SurugaSeiki.Motion.System+Point2d
+====================================================================================================
+
+====================================================================================================
+SurugaSeiki.Motion.System+PowerMeterControlCommand
+====================================================================================================
+
+Campos:
+  Int32 value__
+  static PowerMeterControlCommand None
+  static PowerMeterControlCommand SetRange
+  static PowerMeterControlCommand SetWaveLength
+  static PowerMeterControlCommand SetCommunicationPaused
+
+====================================================================================================
+SurugaSeiki.Motion.System+ProfileCommand
+====================================================================================================
+
+Campos:
+  Int32 value__
+  static ProfileCommand Null
+  static ProfileCommand SetParameter
+  static ProfileCommand Start
+  static ProfileCommand Stop
+
+====================================================================================================
+SurugaSeiki.Motion.System+ProfileParam
+====================================================================================================
+
+====================================================================================================
+SurugaSeiki.Motion.System+RotationCenterParam
+====================================================================================================
+
+====================================================================================================
+SurugaSeiki.Motion.System+SystemInfo
+====================================================================================================
+
+

@@ -1,0 +1,1383 @@
+﻿====================================================================================================
+SurugaSeiki.Motion.Alignment
+====================================================================================================
+
+Constructores:
+  Alignment()
+  Alignment(UInt16 id)
+
+Metodos:
+  ErrorCode StartSingle()
+  ErrorCode StartFlat()
+  ErrorCode StartFocus()
+  ErrorCode StartTwoChRotation()
+  ErrorCode StartMMFRotation()
+  ErrorCode StartLoopBack()
+  ErrorCode StartCommon()
+  ErrorCode Stop()
+  ErrorCode GetErrorCode()
+  Status GetStatus()
+  UInt32 GetErrorAxisID()
+  AligningStatusCode GetAligningStatus()
+  UInt32 GetProfilePacketSumIndex(ProfileDataType profileDataType)
+  ProfileData RequestProfileData(ProfileDataType profileDataType, UInt32 index)
+  ProfileData RequestProfileData(ProfileDataType profileDataType, UInt32 index, Boolean isRotationCenterShift)
+  Double GetVoltage(UInt32 alignmentAInCh)
+  Double GetPower(UInt32 alignmentPMCh)
+  Double GetMeasurementWaveLength(UInt32 alignmentPMCh)
+  ErrorCode SetSingle(ISingleParameter parameter)
+  ErrorCode SetSingle(ISingleParameter parameter, RotationCenter rotationCenter)
+  ErrorCode SetFlat(IFlatParameter parameter)
+  ErrorCode SetFlat(IFlatParameter parameter, RotationCenter rotationCenter)
+  ErrorCode SetFocus(IFocusParameter parameter)
+  ErrorCode SetFocus(IFocusParameter parameter, RotationCenter rotationCenter)
+  ErrorCode SetTwoChRotation(ITwoChRotationParameter parameter)
+  ErrorCode SetTwoChRotation(ITwoChRotationParameter parameter, RotationCenter rotationCenter)
+  ErrorCode SetMMFRotation(IMMFRotationParameter parameter)
+  ErrorCode SetMMFRotation(IMMFRotationParameter parameter, RotationCenter rotationCenter)
+  ErrorCode SetLoopBack(ILoopBackParameter parameter)
+  ErrorCode SetLoopBack(ILoopBackParameter parameter, RotationCenter rotationCenter)
+  ErrorCode SetCommon(CommonParameter parameter)
+  ErrorCode SetCommon(CommonParameter parameter, RotationCenter rotationCenter)
+  ErrorCode SetMeasurementWaveLength(UInt32 alignmentPMCh, Double waveLength)
+
+Tipos anidados/enums:
+  SurugaSeiki.Motion.Alignment+AlignmentType
+  SurugaSeiki.Motion.Alignment+ErrorCode
+  SurugaSeiki.Motion.Alignment+Status
+  SurugaSeiki.Motion.Alignment+AligningStatusCode
+  SurugaSeiki.Motion.Alignment+ProfileDataType
+  SurugaSeiki.Motion.Alignment+ZMode
+  SurugaSeiki.Motion.Alignment+ISharingParameter
+  SurugaSeiki.Motion.Alignment+ISingleParameter
+  SurugaSeiki.Motion.Alignment+SingleParameter
+  SurugaSeiki.Motion.Alignment+IFlatParameter
+  SurugaSeiki.Motion.Alignment+FlatParameter
+  SurugaSeiki.Motion.Alignment+IFocusParameter
+  SurugaSeiki.Motion.Alignment+FocusParameter
+  SurugaSeiki.Motion.Alignment+ITwoChRotationParameter
+  SurugaSeiki.Motion.Alignment+TwoChRotationParameter
+  SurugaSeiki.Motion.Alignment+IMMFRotationParameter
+  SurugaSeiki.Motion.Alignment+MMFRotationParameter
+  SurugaSeiki.Motion.Alignment+ILoopBackParameter
+  SurugaSeiki.Motion.Alignment+LoopBackParameter
+  SurugaSeiki.Motion.Alignment+ICommonParameter
+  SurugaSeiki.Motion.Alignment+CommonParameter
+  SurugaSeiki.Motion.Alignment+ProfileData
+
+====================================================================================================
+SurugaSeiki.Motion.Alignment+AligningStatusCode
+====================================================================================================
+
+Campos:
+  Int32 value__
+  static AligningStatusCode NotAligning
+  static AligningStatusCode Initializing
+  static AligningStatusCode FieldSearching
+  static AligningStatusCode PeakSearchingX
+  static AligningStatusCode PeakSearchingY
+  static AligningStatusCode PeakSearchingZ
+  static AligningStatusCode PeakSearchXCh2
+  static AligningStatusCode PeakSearchYCh2
+
+====================================================================================================
+SurugaSeiki.Motion.Alignment+AlignmentType
+====================================================================================================
+
+Campos:
+  Int32 value__
+  static AlignmentType Single
+  static AlignmentType Flat
+  static AlignmentType Focus
+  static AlignmentType TwoChRotation
+  static AlignmentType MMFRotation
+  static AlignmentType LoopBack
+  static AlignmentType TwoChFlat
+
+====================================================================================================
+SurugaSeiki.Motion.Alignment+CommonParameter
+====================================================================================================
+
+Propiedades:
+  AlignmentType alignmentType (get/set)
+  ZMode zMode (get/set)
+  UInt16 mainStageNumberX (get/set)
+  UInt16 mainStageNumberY (get/set)
+  UInt16 mainStageNumberZ (get/set)
+  UInt16 subStageNumberX (get/set)
+  UInt16 subStageNumberXY (get/set)
+  Double subAngleX (get/set)
+  Double subAngleY (get/set)
+  UInt16 rotateStageNumber (get/set)
+  Double rotateSpeed (get/set)
+  Int16 rotateDirection (get/set)
+  Double coreDistance (get/set)
+  UInt16 mmfStageNumber (get/set)
+  Double mmfSpeed (get/set)
+  Double mmfDistance (get/set)
+  UInt16 pmCh (get/set)
+  UInt16 pmCh1 (get/set)
+  UInt16 pmCh2 (get/set)
+  UInt16 analogCh (get/set)
+  UInt16 analogCh1 (get/set)
+  UInt16 analogCh2 (get/set)
+  Boolean pmAutoRangeUpOn (get/set)
+  Boolean pmInitRangeSettingOn (get/set)
+  Int16 pmInitRange (get/set)
+  Int16 pmInitRangeCh1 (get/set)
+  Int16 pmInitRangeCh2 (get/set)
+  Double fieldSearchThreshold (get/set)
+  Double fieldSearchThresholdCh1 (get/set)
+  Double fieldSearchThresholdCh2 (get/set)
+  Double peakSearchThreshold (get/set)
+  Double peakSearchThresholdXY (get/set)
+  Double peakSearchThresholdCh1 (get/set)
+  Double peakSearchThresholdCh2 (get/set)
+  Double peakSearchThresholdZ (get/set)
+  Double searchRangeX (get/set)
+  Double searchRangeY (get/set)
+  Double searchRangeZ (get/set)
+  Double fieldSearchPitchX (get/set)
+  Double fieldSearchPitchY (get/set)
+  Double fieldSearchPitchZ (get/set)
+  Double fieldSearchFirstPitchX (get/set)
+  Double fieldSearchSpeedX (get/set)
+  Double fieldSearchSpeedY (get/set)
+  Double fieldSearchSpeedZ (get/set)
+  Double peakSearchSpeedX (get/set)
+  Double peakSearchSpeedY (get/set)
+  Double peakSearchSpeedZ (get/set)
+  UInt32 smoothingRangeX (get/set)
+  UInt32 smoothingRangeY (get/set)
+  UInt32 smoothingRangeZ (get/set)
+  Double centroidThresholdX (get/set)
+  Double centroidThresholdY (get/set)
+  Double centroidThresholdZ (get/set)
+  Double convergentRangeX (get/set)
+  Double convergentRangeY (get/set)
+  Double convergentRangeZ (get/set)
+  UInt16 comparisonCount (get/set)
+  UInt16 maxRepeatCount (get/set)
+
+====================================================================================================
+SurugaSeiki.Motion.Alignment+ErrorCode
+====================================================================================================
+
+Campos:
+  Int32 value__
+  static ErrorCode None
+  static ErrorCode Axis
+  static ErrorCode Aligning
+  static ErrorCode Parameter
+
+====================================================================================================
+SurugaSeiki.Motion.Alignment+FlatParameter
+====================================================================================================
+
+Propiedades:
+  UInt16 mainStageNumberX (get/set)
+  UInt16 mainStageNumberY (get/set)
+  UInt16 subStageNumberXY (get/set)
+  Double subAngleX (get/set)
+  Double subAngleY (get/set)
+  UInt16 pmCh (get/set)
+  UInt16 analogCh (get/set)
+  Boolean pmAutoRangeUpOn (get/set)
+  Boolean pmInitRangeSettingOn (get/set)
+  Int16 pmInitRange (get/set)
+  Double fieldSearchThreshold (get/set)
+  Double peakSearchThreshold (get/set)
+  Double searchRangeX (get/set)
+  Double searchRangeY (get/set)
+  Double fieldSearchPitchX (get/set)
+  Double fieldSearchPitchY (get/set)
+  Double fieldSearchFirstPitchX (get/set)
+  Double fieldSearchSpeedX (get/set)
+  Double fieldSearchSpeedY (get/set)
+  Double peakSearchSpeedX (get/set)
+  Double peakSearchSpeedY (get/set)
+  UInt32 smoothingRangeX (get/set)
+  UInt32 smoothingRangeY (get/set)
+  Double centroidThresholdX (get/set)
+  Double centroidThresholdY (get/set)
+  Double convergentRangeX (get/set)
+  Double convergentRangeY (get/set)
+  UInt16 comparisonCount (get/set)
+  UInt16 maxRepeatCount (get/set)
+
+====================================================================================================
+SurugaSeiki.Motion.Alignment+FocusParameter
+====================================================================================================
+
+Propiedades:
+  ZMode zMode (get/set)
+  UInt16 mainStageNumberX (get/set)
+  UInt16 mainStageNumberY (get/set)
+  UInt16 mainStageNumberZ (get/set)
+  UInt16 subStageNumberXY (get/set)
+  Double subAngleX (get/set)
+  Double subAngleY (get/set)
+  UInt16 pmCh (get/set)
+  UInt16 analogCh (get/set)
+  Boolean pmAutoRangeUpOn (get/set)
+  Boolean pmInitRangeSettingOn (get/set)
+  Int16 pmInitRange (get/set)
+  Double fieldSearchThreshold (get/set)
+  Double peakSearchThresholdXY (get/set)
+  Double peakSearchThresholdZ (get/set)
+  Double searchRangeX (get/set)
+  Double searchRangeY (get/set)
+  Double searchRangeZ (get/set)
+  Double fieldSearchPitchX (get/set)
+  Double fieldSearchPitchY (get/set)
+  Double fieldSearchPitchZ (get/set)
+  Double fieldSearchFirstPitchX (get/set)
+  Double fieldSearchSpeedX (get/set)
+  Double fieldSearchSpeedY (get/set)
+  Double fieldSearchSpeedZ (get/set)
+  Double peakSearchSpeedX (get/set)
+  Double peakSearchSpeedY (get/set)
+  Double peakSearchSpeedZ (get/set)
+  UInt32 smoothingRangeX (get/set)
+  UInt32 smoothingRangeY (get/set)
+  UInt32 smoothingRangeZ (get/set)
+  Double centroidThresholdX (get/set)
+  Double centroidThresholdY (get/set)
+  Double centroidThresholdZ (get/set)
+  Double convergentRangeX (get/set)
+  Double convergentRangeY (get/set)
+  Double convergentRangeZ (get/set)
+  UInt16 comparisonCount (get/set)
+  UInt16 maxRepeatCount (get/set)
+
+====================================================================================================
+SurugaSeiki.Motion.Alignment+ICommonParameter
+====================================================================================================
+
+Propiedades:
+  AlignmentType alignmentType (get/set)
+
+====================================================================================================
+SurugaSeiki.Motion.Alignment+IFlatParameter
+====================================================================================================
+
+Propiedades:
+  UInt16 mainStageNumberY (get/set)
+  UInt16 subStageNumberXY (get/set)
+  Double subAngleY (get/set)
+  UInt16 pmCh (get/set)
+  UInt16 analogCh (get/set)
+  Int16 pmInitRange (get/set)
+  Double fieldSearchThreshold (get/set)
+  Double peakSearchThreshold (get/set)
+  Double searchRangeY (get/set)
+  Double fieldSearchPitchX (get/set)
+  Double fieldSearchPitchY (get/set)
+  Double fieldSearchFirstPitchX (get/set)
+  Double fieldSearchSpeedY (get/set)
+  Double peakSearchSpeedY (get/set)
+  UInt32 smoothingRangeY (get/set)
+  Double centroidThresholdY (get/set)
+  Double convergentRangeY (get/set)
+
+====================================================================================================
+SurugaSeiki.Motion.Alignment+IFocusParameter
+====================================================================================================
+
+Propiedades:
+  ZMode zMode (get/set)
+  UInt16 mainStageNumberY (get/set)
+  UInt16 mainStageNumberZ (get/set)
+  UInt16 subStageNumberXY (get/set)
+  Double subAngleY (get/set)
+  UInt16 pmCh (get/set)
+  UInt16 analogCh (get/set)
+  Int16 pmInitRange (get/set)
+  Double fieldSearchThreshold (get/set)
+  Double peakSearchThresholdXY (get/set)
+  Double peakSearchThresholdZ (get/set)
+  Double searchRangeY (get/set)
+  Double searchRangeZ (get/set)
+  Double fieldSearchPitchX (get/set)
+  Double fieldSearchPitchY (get/set)
+  Double fieldSearchPitchZ (get/set)
+  Double fieldSearchFirstPitchX (get/set)
+  Double fieldSearchSpeedY (get/set)
+  Double fieldSearchSpeedZ (get/set)
+  Double peakSearchSpeedY (get/set)
+  Double peakSearchSpeedZ (get/set)
+  UInt32 smoothingRangeY (get/set)
+  UInt32 smoothingRangeZ (get/set)
+  Double centroidThresholdY (get/set)
+  Double centroidThresholdZ (get/set)
+  Double convergentRangeY (get/set)
+  Double convergentRangeZ (get/set)
+
+====================================================================================================
+SurugaSeiki.Motion.Alignment+ILoopBackParameter
+====================================================================================================
+
+Propiedades:
+  UInt16 mainStageNumberY (get/set)
+  UInt16 mainStageNumberZ (get/set)
+  UInt16 subStageNumberXY (get/set)
+  Double subAngleY (get/set)
+  UInt16 pmCh (get/set)
+  UInt16 analogCh (get/set)
+  Int16 pmInitRange (get/set)
+  Double fieldSearchThreshold (get/set)
+  Double peakSearchThresholdXY (get/set)
+  Double peakSearchThresholdZ (get/set)
+  Double searchRangeY (get/set)
+  Double searchRangeZ (get/set)
+  Double fieldSearchPitchX (get/set)
+  Double fieldSearchPitchY (get/set)
+  Double fieldSearchPitchZ (get/set)
+  Double fieldSearchFirstPitchX (get/set)
+  Double fieldSearchSpeedY (get/set)
+  Double fieldSearchSpeedZ (get/set)
+  Double peakSearchSpeedY (get/set)
+  Double peakSearchSpeedZ (get/set)
+  UInt32 smoothingRangeY (get/set)
+  UInt32 smoothingRangeZ (get/set)
+  Double centroidThresholdY (get/set)
+  Double centroidThresholdZ (get/set)
+  Double convergentRangeY (get/set)
+  Double convergentRangeZ (get/set)
+
+====================================================================================================
+SurugaSeiki.Motion.Alignment+IMMFRotationParameter
+====================================================================================================
+
+Propiedades:
+  UInt16 mmfStageNumber (get/set)
+  Double mmfSpeed (get/set)
+  Double mmfDistance (get/set)
+
+====================================================================================================
+SurugaSeiki.Motion.Alignment+ISharingParameter
+====================================================================================================
+
+Propiedades:
+  UInt16 mainStageNumberX (get/set)
+  Double subAngleX (get/set)
+  Boolean pmAutoRangeUpOn (get/set)
+  Boolean pmInitRangeSettingOn (get/set)
+  Double searchRangeX (get/set)
+  Double fieldSearchSpeedX (get/set)
+  Double peakSearchSpeedX (get/set)
+  UInt32 smoothingRangeX (get/set)
+  Double centroidThresholdX (get/set)
+  Double convergentRangeX (get/set)
+  UInt16 comparisonCount (get/set)
+  UInt16 maxRepeatCount (get/set)
+
+====================================================================================================
+SurugaSeiki.Motion.Alignment+ISingleParameter
+====================================================================================================
+
+Propiedades:
+  ZMode zMode (get/set)
+  UInt16 subStageNumberX (get/set)
+  UInt16 pmCh (get/set)
+  UInt16 analogCh (get/set)
+  Int16 pmInitRange (get/set)
+  Double fieldSearchThreshold (get/set)
+  Double peakSearchThreshold (get/set)
+
+====================================================================================================
+SurugaSeiki.Motion.Alignment+ITwoChRotationParameter
+====================================================================================================
+
+Propiedades:
+  UInt16 mainStageNumberY (get/set)
+  UInt16 subStageNumberXY (get/set)
+  Double subAngleY (get/set)
+  UInt16 rotateStageNumber (get/set)
+  Double rotateSpeed (get/set)
+  Int16 rotateDirection (get/set)
+  Double coreDistance (get/set)
+  UInt16 pmCh1 (get/set)
+  UInt16 pmCh2 (get/set)
+  UInt16 analogCh1 (get/set)
+  UInt16 analogCh2 (get/set)
+  Int16 pmInitRangeCh1 (get/set)
+  Int16 pmInitRangeCh2 (get/set)
+  Double fieldSearchThresholdCh1 (get/set)
+  Double fieldSearchThresholdCh2 (get/set)
+  Double peakSearchThresholdCh1 (get/set)
+  Double peakSearchThresholdCh2 (get/set)
+  Double searchRangeY (get/set)
+  Double fieldSearchPitchX (get/set)
+  Double fieldSearchPitchY (get/set)
+  Double fieldSearchFirstPitchX (get/set)
+  Double fieldSearchSpeedY (get/set)
+  Double peakSearchSpeedY (get/set)
+  UInt32 smoothingRangeY (get/set)
+  Double centroidThresholdY (get/set)
+  Double convergentRangeY (get/set)
+
+====================================================================================================
+SurugaSeiki.Motion.Alignment+LoopBackParameter
+====================================================================================================
+
+Propiedades:
+  UInt16 mainStageNumberX (get/set)
+  UInt16 mainStageNumberY (get/set)
+  UInt16 mainStageNumberZ (get/set)
+  UInt16 subStageNumberXY (get/set)
+  Double subAngleX (get/set)
+  Double subAngleY (get/set)
+  UInt16 pmCh (get/set)
+  UInt16 analogCh (get/set)
+  Boolean pmAutoRangeUpOn (get/set)
+  Boolean pmInitRangeSettingOn (get/set)
+  Int16 pmInitRange (get/set)
+  Double fieldSearchThreshold (get/set)
+  Double peakSearchThresholdXY (get/set)
+  Double peakSearchThresholdZ (get/set)
+  Double searchRangeX (get/set)
+  Double searchRangeY (get/set)
+  Double searchRangeZ (get/set)
+  Double fieldSearchPitchX (get/set)
+  Double fieldSearchPitchY (get/set)
+  Double fieldSearchPitchZ (get/set)
+  Double fieldSearchFirstPitchX (get/set)
+  Double fieldSearchSpeedX (get/set)
+  Double fieldSearchSpeedY (get/set)
+  Double fieldSearchSpeedZ (get/set)
+  Double peakSearchSpeedX (get/set)
+  Double peakSearchSpeedY (get/set)
+  Double peakSearchSpeedZ (get/set)
+  UInt32 smoothingRangeX (get/set)
+  UInt32 smoothingRangeY (get/set)
+  UInt32 smoothingRangeZ (get/set)
+  Double centroidThresholdX (get/set)
+  Double centroidThresholdY (get/set)
+  Double centroidThresholdZ (get/set)
+  Double convergentRangeX (get/set)
+  Double convergentRangeY (get/set)
+  Double convergentRangeZ (get/set)
+  UInt16 comparisonCount (get/set)
+  UInt16 maxRepeatCount (get/set)
+
+====================================================================================================
+SurugaSeiki.Motion.Alignment+MMFRotationParameter
+====================================================================================================
+
+Propiedades:
+  UInt16 mainStageNumberX (get/set)
+  UInt16 mainStageNumberY (get/set)
+  UInt16 subStageNumberXY (get/set)
+  Double subAngleX (get/set)
+  Double subAngleY (get/set)
+  UInt16 rotateStageNumber (get/set)
+  Double rotateSpeed (get/set)
+  Int16 rotateDirection (get/set)
+  Double coreDistance (get/set)
+  UInt16 mmfStageNumber (get/set)
+  Double mmfSpeed (get/set)
+  Double mmfDistance (get/set)
+  UInt16 pmCh1 (get/set)
+  UInt16 pmCh2 (get/set)
+  UInt16 analogCh1 (get/set)
+  UInt16 analogCh2 (get/set)
+  Boolean pmAutoRangeUpOn (get/set)
+  Boolean pmInitRangeSettingOn (get/set)
+  Int16 pmInitRangeCh1 (get/set)
+  Int16 pmInitRangeCh2 (get/set)
+  Double fieldSearchThresholdCh1 (get/set)
+  Double fieldSearchThresholdCh2 (get/set)
+  Double peakSearchThresholdCh1 (get/set)
+  Double peakSearchThresholdCh2 (get/set)
+  Double searchRangeX (get/set)
+  Double searchRangeY (get/set)
+  Double fieldSearchPitchX (get/set)
+  Double fieldSearchPitchY (get/set)
+  Double fieldSearchFirstPitchX (get/set)
+  Double fieldSearchSpeedX (get/set)
+  Double fieldSearchSpeedY (get/set)
+  Double peakSearchSpeedX (get/set)
+  Double peakSearchSpeedY (get/set)
+  UInt32 smoothingRangeX (get/set)
+  UInt32 smoothingRangeY (get/set)
+  Double centroidThresholdX (get/set)
+  Double centroidThresholdY (get/set)
+  Double convergentRangeX (get/set)
+  Double convergentRangeY (get/set)
+  UInt16 comparisonCount (get/set)
+  UInt16 maxRepeatCount (get/set)
+
+====================================================================================================
+SurugaSeiki.Motion.Alignment+ProfileData
+====================================================================================================
+
+Campos:
+  UInt16 mainAxisNumber
+  UInt16 sub1AxisNumber
+  UInt16 sub2AxisNumber
+  UInt16 signalCh1Number
+  UInt16 signalCh2Number
+  UInt32 packetIndex
+  UInt32 dataCount
+  Double[] mainPositionList
+  Double[] sub1PositionList
+  Double[] sub2PositionList
+  Double[] signalCh1List
+  Double[] signalCh2List
+
+====================================================================================================
+SurugaSeiki.Motion.Alignment+ProfileDataType
+====================================================================================================
+
+Campos:
+  Int32 value__
+  static ProfileDataType FieldSearch
+  static ProfileDataType PeakSearchX
+  static ProfileDataType PeakSearchY
+  static ProfileDataType PeakSearchZ
+  static ProfileDataType PeakSearchXCh2
+  static ProfileDataType PeakSearchYCh2
+
+====================================================================================================
+SurugaSeiki.Motion.Alignment+SingleParameter
+====================================================================================================
+
+Propiedades:
+  ZMode zMode (get/set)
+  UInt16 mainStageNumberX (get/set)
+  UInt16 subStageNumberX (get/set)
+  Double subAngleX (get/set)
+  UInt16 pmCh (get/set)
+  UInt16 analogCh (get/set)
+  Boolean pmAutoRangeUpOn (get/set)
+  Boolean pmInitRangeSettingOn (get/set)
+  Int16 pmInitRange (get/set)
+  Double fieldSearchThreshold (get/set)
+  Double peakSearchThreshold (get/set)
+  Double searchRangeX (get/set)
+  Double fieldSearchSpeedX (get/set)
+  Double peakSearchSpeedX (get/set)
+  UInt32 smoothingRangeX (get/set)
+  Double centroidThresholdX (get/set)
+  Double convergentRangeX (get/set)
+  UInt16 comparisonCount (get/set)
+  UInt16 maxRepeatCount (get/set)
+
+====================================================================================================
+SurugaSeiki.Motion.Alignment+Status
+====================================================================================================
+
+Campos:
+  Int32 value__
+  static Status Stopping
+  static Status Success
+  static Status Aligning
+  static Status FieldSearchRangeOver
+  static Status ProfileDataOver
+  static Status PeakSearchCountOver
+  static Status PeakSearchRangeOver
+  static Status InvalidParameter
+  static Status ServoIsNotReady
+  static Status ServoIsAlarm
+  static Status StageOnLimit
+  static Status VoltageLimit
+  static Status PMRangeLimit
+  static Status PMInitRangeChangeFail
+  static Status PMDisconnected
+  static Status RotationAdjustmentFail
+  static Status InPositionFail
+  static Status TorqueLimit
+
+====================================================================================================
+SurugaSeiki.Motion.Alignment+TwoChRotationParameter
+====================================================================================================
+
+Propiedades:
+  UInt16 mainStageNumberX (get/set)
+  UInt16 mainStageNumberY (get/set)
+  UInt16 subStageNumberXY (get/set)
+  Double subAngleX (get/set)
+  Double subAngleY (get/set)
+  UInt16 rotateStageNumber (get/set)
+  Double rotateSpeed (get/set)
+  Int16 rotateDirection (get/set)
+  Double coreDistance (get/set)
+  UInt16 pmCh1 (get/set)
+  UInt16 pmCh2 (get/set)
+  UInt16 analogCh1 (get/set)
+  UInt16 analogCh2 (get/set)
+  Boolean pmAutoRangeUpOn (get/set)
+  Boolean pmInitRangeSettingOn (get/set)
+  Int16 pmInitRangeCh1 (get/set)
+  Int16 pmInitRangeCh2 (get/set)
+  Double fieldSearchThresholdCh1 (get/set)
+  Double fieldSearchThresholdCh2 (get/set)
+  Double peakSearchThresholdCh1 (get/set)
+  Double peakSearchThresholdCh2 (get/set)
+  Double searchRangeX (get/set)
+  Double searchRangeY (get/set)
+  Double fieldSearchPitchX (get/set)
+  Double fieldSearchPitchY (get/set)
+  Double fieldSearchFirstPitchX (get/set)
+  Double fieldSearchSpeedX (get/set)
+  Double fieldSearchSpeedY (get/set)
+  Double peakSearchSpeedX (get/set)
+  Double peakSearchSpeedY (get/set)
+  UInt32 smoothingRangeX (get/set)
+  UInt32 smoothingRangeY (get/set)
+  Double centroidThresholdX (get/set)
+  Double centroidThresholdY (get/set)
+  Double convergentRangeX (get/set)
+  Double convergentRangeY (get/set)
+  UInt16 comparisonCount (get/set)
+  UInt16 maxRepeatCount (get/set)
+
+====================================================================================================
+SurugaSeiki.Motion.Alignment+ZMode
+====================================================================================================
+
+Campos:
+  Int32 value__
+  static ZMode Round
+  static ZMode ForwardPlus
+  static ZMode ForwardMinus
+
+====================================================================================================
+SurugaSeiki.Motion.AngleAdjustment
+====================================================================================================
+
+Constructores:
+  AngleAdjustment(UInt16 id)
+
+Metodos:
+  ErrorCode Start()
+  ErrorCode Stop()
+  Status GetStatus()
+  UInt32 GetErrorAxisID()
+  AdjustingStatus GetAdjustingStatus()
+  UInt32 GetProfilePacketSumIndex(ProfileDataType profileDataType)
+  ProfileData RequestProfileData(ProfileDataType profileDataType, UInt32 index)
+  ErrorCode SetParameter(AngleAdjustmentParameter parameter)
+  ErrorCode SetParameter(AngleAdjustmentParameter parameter, RotationCenter rotationCenter)
+
+Tipos anidados/enums:
+  SurugaSeiki.Motion.AngleAdjustment+ErrorCode
+  SurugaSeiki.Motion.AngleAdjustment+Status
+  SurugaSeiki.Motion.AngleAdjustment+AdjustingStatus
+  SurugaSeiki.Motion.AngleAdjustment+ProfileDataType
+  SurugaSeiki.Motion.AngleAdjustment+AngleAdjustmentParameter
+  SurugaSeiki.Motion.AngleAdjustment+ProfileData
+
+====================================================================================================
+SurugaSeiki.Motion.AngleAdjustment+AdjustingStatus
+====================================================================================================
+
+Campos:
+  Int32 value__
+  static AdjustingStatus NotAdjusting
+  static AdjustingStatus Initializing
+  static AdjustingStatus ContactingZ
+  static AdjustingStatus AdjustingTx
+  static AdjustingStatus AdjustingTy
+
+====================================================================================================
+SurugaSeiki.Motion.AngleAdjustment+AngleAdjustmentParameter
+====================================================================================================
+
+Campos:
+  Double gap
+  UInt16 signalChNumber
+  Double signalLowerLimit
+  UInt16 unlockDOutChNumber
+  Boolean unlockDOutControlOn
+  Boolean lockUnlockAdjustEnbale
+  Double lockUnlockDifference
+  UInt16 contactAxisNumber
+  Double contactSearchRange
+  Double contactSearchSpeed
+  UInt32 contactSmoothing
+  UInt32 contactSensitivity
+  Double pushDistance
+  UInt16 angleAxisNumberTx
+  UInt16 angleAxisNumberTy
+  Double angleSearchRangeTx
+  Double angleSearchRangeTy
+  Double angleSearchSpeedTx
+  Double angleSearchSpeedTy
+  UInt32 angleSmoothingTx
+  UInt32 angleSmoothingTy
+  UInt32 angleSensitivityTx
+  UInt32 angleSensitivityTy
+  UInt16 angleJudgeCountTx
+  UInt16 angleJudgeCountTy
+  Double angleConvergentRangeTx
+  Double angleConvergentRangeTy
+  UInt16 angleComparisonCount
+  UInt16 angleMaxCount
+
+====================================================================================================
+SurugaSeiki.Motion.AngleAdjustment+ErrorCode
+====================================================================================================
+
+Campos:
+  Int32 value__
+  static ErrorCode None
+  static ErrorCode Axis
+  static ErrorCode Adjusting
+  static ErrorCode Parameter
+
+====================================================================================================
+SurugaSeiki.Motion.AngleAdjustment+ProfileData
+====================================================================================================
+
+Campos:
+  UInt16 mainAxisNumber
+  UInt16 sub1AxisNumber
+  UInt16 sub2AxisNumber
+  UInt16 signalCh1Number
+  UInt16 signalCh2Number
+  UInt32 packetIndex
+  UInt32 dataCount
+  Double[] mainPositionList
+  Double[] sub1PositionList
+  Double[] sub2PositionList
+  Double[] signalCh1List
+  Double[] signalCh2List
+
+====================================================================================================
+SurugaSeiki.Motion.AngleAdjustment+ProfileDataType
+====================================================================================================
+
+Campos:
+  Int32 value__
+  static ProfileDataType ContactZ
+  static ProfileDataType AdjustmentTx
+  static ProfileDataType AdjustmentTy
+
+====================================================================================================
+SurugaSeiki.Motion.AngleAdjustment+Status
+====================================================================================================
+
+Campos:
+  Int32 value__
+  static Status Stopping
+  static Status Success
+  static Status Adjusting
+  static Status ProfileDataOver
+  static Status InvalidParameter
+  static Status ServoIsNotReady
+  static Status ServoIsAlarm
+  static Status StageOnLimit
+  static Status SignalLowerLimit
+  static Status CouldnotContact
+  static Status AdjustCountOver
+  static Status AngleAdjustRnageOver
+  static Status LostContact
+
+====================================================================================================
+SurugaSeiki.Motion.Axis2D
+====================================================================================================
+
+Constructores:
+  Axis2D(UInt16 mainStageNumber, UInt16 subStageNumber)
+
+Metodos:
+  ErrorCode SetAxisNumber(UInt16 mainStageNumber, UInt16 subStageNumber)
+  UInt16[] GetAxisNumber()
+  ErrorCode MoveAbsolute(Point targetPosition)
+  ErrorCode MoveAbsolute(Double mainTargetPosition, Double subTargetPosition)
+  ErrorCode MoveRelative(Point targetDistance)
+  ErrorCode MoveRelative(Double mainDistance, Double subDistance)
+  ErrorCode MoveAbsoluteAngle(Double mainTargetPosition, Double subAngle)
+  ErrorCode MoveRelativeAngle(Double mainDistance, Double subAngle)
+  ErrorCode Stop()
+  Point GetTargetPosition()
+  Point GetActualPosition()
+  Boolean IsMoving()
+  ErrorCode SetSpeed(Double speed)
+  ErrorCode SetAccelRate(Double rate)
+  ErrorCode SetDecelRate(Double rate)
+  ErrorCode GetErrorCode()
+  Status GetStatus()
+
+Tipos anidados/enums:
+  SurugaSeiki.Motion.Axis2D+Point
+
+====================================================================================================
+SurugaSeiki.Motion.Axis2D+Point
+====================================================================================================
+
+Campos:
+  Double X
+  Double Y
+
+====================================================================================================
+SurugaSeiki.Motion.Axis3D
+====================================================================================================
+
+Constructores:
+  Axis3D(UInt16 mainStageNumberX, UInt16 mainStageNumberY, UInt16 mainStageNumberZ)
+
+Metodos:
+  ErrorCode SetAxisNumber(UInt16 mainStageNumberX, UInt16 mainStageNumberY, UInt16 mainStageNumberZ)
+  UInt16[] GetAxisNumber()
+  ErrorCode MoveAbsolute(Point3D targetPosition)
+  ErrorCode MoveAbsolute(Double targetPositionX, Double targetPositionY, Double targetPositionZ)
+  ErrorCode MoveAbsolute(Point3D targetPosition, UInt16 dOutId, Int16 dOutOnDelayTime, Int16 dOutOffDelayTime)
+  ErrorCode MoveAbsolute(Double targetPositionX, Double targetPositionY, Double targetPositionZ, UInt16 dOutId, Int16 dOutOnDelayTime, Int16 dOutOffDelayTime)
+  ErrorCode MoveRelative(Point3D targetDistance)
+  ErrorCode MoveRelative(Double targetDistanceX, Double targetDistanceY, Double targetDistanceZ)
+  ErrorCode MoveRelative(Point3D targetDistance, UInt16 dOutId, Int16 dOutOnDelayTime, Int16 dOutOffDelayTime)
+  ErrorCode MoveRelative(Double targetDistanceX, Double targetDistanceY, Double targetDistanceZ, UInt16 dOutId, Int16 dOutOnDelayTime, Int16 dOutOffDelayTime)
+  ErrorCode Stop()
+  Point3D GetTargetPosition()
+  Point3D GetActualPosition()
+  Boolean IsMoving()
+  ErrorCode SetSpeed(Double speed)
+  ErrorCode SetAccelRate(Double accelRate)
+  ErrorCode SetDecelRate(Double decelRate)
+  ErrorCode SetStageNumber(UInt16 mainStageNumberX, UInt16 mainStageNumberY, UInt16 mainStageNumberZ)
+  ErrorCode SetSubStageNumber(UInt16 subStageNumberX, UInt16 subStageNumberY, UInt16 subStageNumberZ)
+  ErrorCode SetRotationCenter(Double rotationOffsetX, Double rotationOffsetY, Double rotationOffsetZ)
+  ErrorCode GetErrorCode()
+  Status GetStatus()
+
+Tipos anidados/enums:
+  SurugaSeiki.Motion.Axis3D+Point3D
+  SurugaSeiki.Motion.Axis3D+RotationCenter
+
+====================================================================================================
+SurugaSeiki.Motion.Axis3D+Point3D
+====================================================================================================
+
+Campos:
+  Double X
+  Double Y
+  Double Z
+
+====================================================================================================
+SurugaSeiki.Motion.Axis3D+RotationCenter
+====================================================================================================
+
+Campos:
+  UInt16 mainStageNumberX
+  UInt16 mainStageNumberY
+  UInt16 mainStageNumberZ
+  UInt16 subStageNumberX
+  UInt16 subStageNumberY
+  UInt16 subStageNumberZ
+  Double offsetX
+  Double offsetY
+  Double offsetZ
+
+====================================================================================================
+SurugaSeiki.Motion.AxisComponents
+====================================================================================================
+
+Constructores:
+  AxisComponents(UInt16 axisNumberm)
+
+Metodos:
+  ErrorCode MoveAbsolute(Double position)
+  ErrorCode MoveRelative(Double distance)
+  ErrorCode ReturnOrigin()
+  ErrorCode Stop()
+  ErrorCode TurnOnServo()
+  ErrorCode TurnOffServo()
+  ErrorCode ResetError()
+  Double GetTargetPosition()
+  Double GetActualPosition()
+  Boolean IsServoOn()
+  Boolean IsServoAlarm()
+  Boolean IsMoving()
+  Boolean IsOriginSignalOn()
+  Boolean IsCwLimitSignalOn()
+  Boolean IsCcwLimitSignalOn()
+  Boolean IsCwTorqueLimitOn()
+  Boolean IsCcwTorqueLimitOn()
+  Boolean IsOriginReturnSucceeded()
+  ErrorCode SetAccelRate(Double rate)
+  ErrorCode SetDecelRate(Double rate)
+  ErrorCode SetSineMotion(Boolean sineMotion)
+  ErrorCode SetFulcrumSpan(Double span)
+  ErrorCode SetEncoderStepLength(Double length)
+  ErrorCode SetMaxSpeed(Double speed)
+  ErrorCode SetCWTorqueLimit(Double cWlimit)
+  ErrorCode SetCCWTorqueLimit(Double cCWlimit)
+  ErrorCode GetErrorCode()
+  Status GetStatus()
+
+Tipos anidados/enums:
+  SurugaSeiki.Motion.AxisComponents+ErrorCode
+  SurugaSeiki.Motion.AxisComponents+Status
+
+====================================================================================================
+SurugaSeiki.Motion.AxisComponents+ErrorCode
+====================================================================================================
+
+Campos:
+  Int32 value__
+  static ErrorCode None
+  static ErrorCode ServoAlarm
+  static ErrorCode ServoOff
+  static ErrorCode Moving
+  static ErrorCode NotConnected
+  static ErrorCode Limit
+  static ErrorCode Origin
+  static ErrorCode Parameter
+  static ErrorCode Torque
+
+====================================================================================================
+SurugaSeiki.Motion.AxisComponents+Status
+====================================================================================================
+
+Campos:
+  Int32 value__
+  static Status ServoAlarm
+  static Status ServoOff
+  static Status Stopping
+  static Status InPosition
+  static Status Moving
+  static Status NotConnected
+  static Status CwLimit
+  static Status CcwLimit
+  static Status CwTorqueLimit
+  static Status CcwTorqueLimit
+
+====================================================================================================
+SurugaSeiki.Motion.ErrorLog
+====================================================================================================
+
+====================================================================================================
+SurugaSeiki.Motion.IO
+====================================================================================================
+
+Constructores:
+  IO()
+
+Metodos:
+  Boolean GetPortState(DigitalIOType iOType, UInt16 id)
+  Void SetPortState(UInt16 id, Boolean portState)
+  Void SetPulseOutput(UInt16 id, UInt16 delayTime, UInt16 highWidth, UInt16 lowWidth, Int16 repetitionCount)
+  Double GetAnalogValue(AnalogIOType iOType, UInt16 id)
+  Void SetAnalogValue(UInt16 id, Double setValue)
+
+Campos:
+  static Int16 RepetitionCountForever
+
+Tipos anidados/enums:
+  SurugaSeiki.Motion.IO+DigitalIOType
+  SurugaSeiki.Motion.IO+AnalogIOType
+
+====================================================================================================
+SurugaSeiki.Motion.IO+AnalogIOType
+====================================================================================================
+
+Campos:
+  Int32 value__
+  static AnalogIOType Input
+  static AnalogIOType Output
+
+====================================================================================================
+SurugaSeiki.Motion.IO+DOutControlParameterToAlignmentSystem
+====================================================================================================
+
+====================================================================================================
+SurugaSeiki.Motion.IO+DigitalIOType
+====================================================================================================
+
+Campos:
+  Int32 value__
+  static DigitalIOType Input
+  static DigitalIOType Output
+
+====================================================================================================
+SurugaSeiki.Motion.PowerMeter
+====================================================================================================
+
+Constructores:
+  PowerMeter()
+
+Metodos:
+  Double GetPower(UInt16 ch)
+  AllowedRange GetRange(UInt16 ch)
+  Double GetWavelength(UInt16 ch)
+  ErrorCode SetRange(UInt16 ch, AllowedRange range)
+  ErrorCode SetWaveLength(UInt16 ch, Double waveLength)
+  ErrorCode PauseCommunication(UInt16 ch, Boolean isEnabled)
+
+Tipos anidados/enums:
+  SurugaSeiki.Motion.PowerMeter+ErrorCode
+  SurugaSeiki.Motion.PowerMeter+AllowedRange
+
+====================================================================================================
+SurugaSeiki.Motion.PowerMeter+AllowedRange
+====================================================================================================
+
+Campos:
+  Int16 value__
+  static AllowedRange Minus60
+  static AllowedRange Minus50
+  static AllowedRange Minus40
+  static AllowedRange Minus30
+  static AllowedRange Minus20
+  static AllowedRange Minus10
+  static AllowedRange Zero
+  static AllowedRange Plus10
+  static AllowedRange Plus20
+  static AllowedRange Auto
+  static AllowedRange Invalid
+
+====================================================================================================
+SurugaSeiki.Motion.PowerMeter+ErrorCode
+====================================================================================================
+
+Campos:
+  Int32 value__
+  static ErrorCode None
+  static ErrorCode ChannelOutOfRange
+  static ErrorCode Invalid
+
+====================================================================================================
+SurugaSeiki.Motion.Profile
+====================================================================================================
+
+Constructores:
+  Profile()
+
+Metodos:
+  ErrorCode Start()
+  ErrorCode Stop()
+  Status GetProfileStatus()
+  UInt32 GetProfilePacketSumIndex()
+  ProfileData RequestProfileData(UInt32 index)
+  ProfileData RequestProfileData(UInt32 index, Boolean isRotationCenterShift)
+  ErrorCode SetProfile(ProfileParameter parameter)
+  ErrorCode SetProfile(ProfileParameter parameter, RotationCenter rotationCenter)
+
+Tipos anidados/enums:
+  SurugaSeiki.Motion.Profile+ErrorCode
+  SurugaSeiki.Motion.Profile+Status
+  SurugaSeiki.Motion.Profile+ProfileParameter
+  SurugaSeiki.Motion.Profile+ProfileData
+
+====================================================================================================
+SurugaSeiki.Motion.Profile+ErrorCode
+====================================================================================================
+
+Campos:
+  Int32 value__
+  static ErrorCode None
+  static ErrorCode Axis
+  static ErrorCode Profiling
+  static ErrorCode Parameter
+
+====================================================================================================
+SurugaSeiki.Motion.Profile+ProfileData
+====================================================================================================
+
+Campos:
+  UInt16 mainAxisNumber
+  UInt16 sub1AxisNumber
+  UInt16 sub2AxisNumber
+  UInt16 signalCh1Number
+  UInt16 signalCh2Number
+  UInt32 packetIndex
+  UInt32 dataCount
+  Double[] mainPositionList
+  Double[] sub1PositionList
+  Double[] sub2PositionList
+  Double[] signalCh1List
+  Double[] signalCh2List
+
+====================================================================================================
+SurugaSeiki.Motion.Profile+ProfileParameter
+====================================================================================================
+
+Campos:
+  UInt16 mainAxisNumber
+  UInt16 sub1AxisNumber
+  UInt16 sub2AxisNumber
+  UInt16 signalCh1Number
+  UInt16 signalCh2Number
+  Double mainRange
+  Double sub1Range
+  Double sub2Range
+  Double speed
+  Double accelRate
+  Double decelRate
+  UInt32 smoothing
+
+====================================================================================================
+SurugaSeiki.Motion.Profile+Status
+====================================================================================================
+
+Campos:
+  Int32 value__
+  static Status Stopping
+  static Status Success
+  static Status Profiling
+  static Status ProfileDataOver
+  static Status InvalidParameter
+  static Status ServoIsNotReady
+  static Status ServoIsAlarm
+  static Status StageOnLimit
+  static Status TorqueLimit
+
+====================================================================================================
+SurugaSeiki.Motion.System
+====================================================================================================
+
+Propiedades:
+  UInt16 MaxAxisStageNumber (get/set)
+  UInt16 MaxAnalogInputChNumber (get/set)
+  UInt16 MaxAlignmentNumber (get/set)
+  UInt16 MaxAngleAdjustmentNumber (get/set)
+  UInt16 MaxDInChNumber (get/set)
+  UInt16 MaxDOutChNumber (get/set)
+  UInt16 MaxAnalogOutputChNumber (get/set)
+  UInt16 MaxPowerMeterChNumber (get/set)
+  System Instance (get)
+  Boolean Connected (get)
+  String DllVersion (get)
+  String SystemVersion (get)
+
+Metodos:
+  Boolean IsError()
+  ErrorCode GetCurrentErrorCode()
+  Boolean IsEmergencyAsserted()
+  Void SetAddress(String addr)
+  Void DisconnectAds()
+
+Campos:
+  static UInt16 MaxProfileNumber
+  static UInt32 ProfileDataPacketMaxDataNumber
+
+Tipos anidados/enums:
+  SurugaSeiki.Motion.System+ErrorCode
+
+====================================================================================================
+SurugaSeiki.Motion.System+AlignmentChParam
+====================================================================================================
+
+====================================================================================================
+SurugaSeiki.Motion.System+AlignmentCommand
+====================================================================================================
+
+Campos:
+  Int32 value__
+  static AlignmentCommand Null
+  static AlignmentCommand StartSingle
+  static AlignmentCommand StartFlat
+  static AlignmentCommand StartFocus
+  static AlignmentCommand StartTwoChRotation
+  static AlignmentCommand StartMMFRotation
+  static AlignmentCommand Stop
+  static AlignmentCommand SetSingle
+  static AlignmentCommand SetFlat
+  static AlignmentCommand SetFocus
+  static AlignmentCommand SetTwoChRotation
+  static AlignmentCommand SetMMFRotation
+  static AlignmentCommand StartLoopBack
+  static AlignmentCommand SetLoopBack
+
+====================================================================================================
+SurugaSeiki.Motion.System+AlignmentMainAxisParam
+====================================================================================================
+
+====================================================================================================
+SurugaSeiki.Motion.System+AlignmentParam
+====================================================================================================
+
+====================================================================================================
+SurugaSeiki.Motion.System+AlignmentPowerMeterInfo
+====================================================================================================
+
+====================================================================================================
+SurugaSeiki.Motion.System+AlignmentStatusInfo
+====================================================================================================
+
+====================================================================================================
+SurugaSeiki.Motion.System+AnalogOutputControlCommand
+====================================================================================================
+
+Campos:
+  Int32 value__
+  static AnalogOutputControlCommand Null
+  static AnalogOutputControlCommand SetAnalogOutput
+
+====================================================================================================
+SurugaSeiki.Motion.System+AngleAdjustmentCommand
+====================================================================================================
+
+Campos:
+  Int32 value__
+  static AngleAdjustmentCommand Null
+  static AngleAdjustmentCommand SetParameter
+  static AngleAdjustmentCommand Start
+  static AngleAdjustmentCommand Stop
+
+====================================================================================================
+SurugaSeiki.Motion.System+AngleAdjustmentParam
+====================================================================================================
+
+====================================================================================================
+SurugaSeiki.Motion.System+AngleAdjustmentStatusInfo
+====================================================================================================
+
+====================================================================================================
+SurugaSeiki.Motion.System+Axis2DCommand
+====================================================================================================
+
+Campos:
+  Int32 value__
+  static Axis2DCommand Null
+  static Axis2DCommand MoveAbsolute
+  static Axis2DCommand MoveRelative
+  static Axis2DCommand MoveAbsoluteAngle
+  static Axis2DCommand MoveRelativeAngle
+  static Axis2DCommand Stop
+  static Axis2DCommand SetCompositionSpeed
+  static Axis2DCommand SetAccelRate
+  static Axis2DCommand SetDecelRate
+  static Axis2DCommand SetStageNumber
+
+====================================================================================================
+SurugaSeiki.Motion.System+Axis2DParam
+====================================================================================================
+
+====================================================================================================
+SurugaSeiki.Motion.System+AxisCommandStruct
+====================================================================================================
+
+====================================================================================================
+SurugaSeiki.Motion.System+AxisComponentCommand
+====================================================================================================
+
+Campos:
+  Int32 value__
+  static AxisComponentCommand Null
+  static AxisComponentCommand MoveAbsolute
+  static AxisComponentCommand MoveRelative
+  static AxisComponentCommand ReturnOrigin
+  static AxisComponentCommand Stop
+  static AxisComponentCommand TurnOnServo
+  static AxisComponentCommand TurnOffServo
+  static AxisComponentCommand ResetError
+  static AxisComponentCommand SetMaxSpeed
+  static AxisComponentCommand SetAccelRate
+  static AxisComponentCommand SetDecelRate
+  static AxisComponentCommand SetSineMotion
+  static AxisComponentCommand SetFulcrumSpan
+  static AxisComponentCommand SetEncoderStepLength
+  static AxisComponentCommand SetCWTorquelimit
+  static AxisComponentCommand SetCCWTorquelimit
+
+====================================================================================================
+SurugaSeiki.Motion.System+AxisControlType
+====================================================================================================
+
+Campos:
+  Int32 value__
+  static AxisControlType AxisComponents
+  static AxisControlType Axis2D
+  static AxisControlType Axis3D
+
+====================================================================================================
+SurugaSeiki.Motion.System+AxisMethod
+====================================================================================================
+
+Campos:
+  Int32 value__
+  static AxisMethod Null
+  static AxisMethod MoveAbsolute
+  static AxisMethod MoveRelative
+  static AxisMethod MoveAbsoluteAngle
+  static AxisMethod MoveRelativeAngle
+  static AxisMethod Stop
+  static AxisMethod SetCompositionSpeed
+  static AxisMethod SetAccelRate
+  static AxisMethod SetDecelRate
+  static AxisMethod SetStageNumber
+  static AxisMethod SetSubStageNumber
+  static AxisMethod SetRotationCenter
+  static AxisMethod SetFixedAxisOffset
+
+====================================================================================================
+SurugaSeiki.Motion.System+AxisStatus
+====================================================================================================
+
+====================================================================================================
+SurugaSeiki.Motion.System+DOutControlCommand
+====================================================================================================
+
+Campos:
+  Int32 value__
+  static DOutControlCommand Null
+  static DOutControlCommand SetDout
+  static DOutControlCommand SetPulseOutput
+
+====================================================================================================
+SurugaSeiki.Motion.System+DeviceControlCommand
+====================================================================================================
+
+Campos:
+  Int32 value__
+  static DeviceControlCommand Null
+  static DeviceControlCommand SetWaveLength
+
+====================================================================================================
+SurugaSeiki.Motion.System+DeviceStatusMap
+====================================================================================================
+
+====================================================================================================
+SurugaSeiki.Motion.System+ErrorCode
+====================================================================================================
+
+Campos:
+  Int32 value__
+  static ErrorCode NoError
+  static ErrorCode ConnectionLost
+  static ErrorCode VersionError
+  static ErrorCode MaxNumberOfErrorCode
+
+====================================================================================================
+SurugaSeiki.Motion.System+Point2d
+====================================================================================================
+
+====================================================================================================
+SurugaSeiki.Motion.System+PowerMeterControlCommand
+====================================================================================================
+
+Campos:
+  Int32 value__
+  static PowerMeterControlCommand None
+  static PowerMeterControlCommand SetRange
+  static PowerMeterControlCommand SetWaveLength
+  static PowerMeterControlCommand SetCommunicationPaused
+
+====================================================================================================
+SurugaSeiki.Motion.System+ProfileCommand
+====================================================================================================
+
+Campos:
+  Int32 value__
+  static ProfileCommand Null
+  static ProfileCommand SetParameter
+  static ProfileCommand Start
+  static ProfileCommand Stop
+
+====================================================================================================
+SurugaSeiki.Motion.System+ProfileParam
+====================================================================================================
+
+====================================================================================================
+SurugaSeiki.Motion.System+RotationCenterParam
+====================================================================================================
+
+====================================================================================================
+SurugaSeiki.Motion.System+SystemInfo
+====================================================================================================
+
+

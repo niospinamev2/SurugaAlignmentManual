@@ -1,0 +1,42 @@
+====================================================================================================
+SurugaSeiki.Motion.IO
+====================================================================================================
+
+Constructores:
+  IO()
+
+Metodos:
+  Boolean GetPortState(DigitalIOType iOType, UInt16 id)
+  Void SetPortState(UInt16 id, Boolean portState)
+  Void SetPulseOutput(UInt16 id, UInt16 delayTime, UInt16 highWidth, UInt16 lowWidth, Int16 repetitionCount)
+  Double GetAnalogValue(AnalogIOType iOType, UInt16 id)
+  Void SetAnalogValue(UInt16 id, Double setValue)
+
+Campos:
+  static Int16 RepetitionCountForever
+
+Tipos anidados/enums:
+  SurugaSeiki.Motion.IO+DigitalIOType
+  SurugaSeiki.Motion.IO+AnalogIOType
+
+====================================================================================================
+SurugaSeiki.Motion.IO+AnalogIOType
+====================================================================================================
+
+Campos:
+  Int32 value__
+  static AnalogIOType Input
+  static AnalogIOType Output
+
+====================================================================================================
+SurugaSeiki.Motion.IO+DOutControlParameterToAlignmentSystem
+====================================================================================================
+
+====================================================================================================
+SurugaSeiki.Motion.IO+DigitalIOType
+====================================================================================================
+
+Campos:
+  Int32 value__
+  static DigitalIOType Input
+  static DigitalIOType Output

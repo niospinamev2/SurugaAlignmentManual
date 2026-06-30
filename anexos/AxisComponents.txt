@@ -1,0 +1,73 @@
+====================================================================================================
+SurugaSeiki.Motion.AxisComponents
+====================================================================================================
+
+Constructores:
+  AxisComponents(UInt16 axisNumberm)
+
+Metodos:
+  ErrorCode MoveAbsolute(Double position)
+  ErrorCode MoveRelative(Double distance)
+  ErrorCode ReturnOrigin()
+  ErrorCode Stop()
+  ErrorCode TurnOnServo()
+  ErrorCode TurnOffServo()
+  ErrorCode ResetError()
+  Double GetTargetPosition()
+  Double GetActualPosition()
+  Boolean IsServoOn()
+  Boolean IsServoAlarm()
+  Boolean IsMoving()
+  Boolean IsOriginSignalOn()
+  Boolean IsCwLimitSignalOn()
+  Boolean IsCcwLimitSignalOn()
+  Boolean IsCwTorqueLimitOn()
+  Boolean IsCcwTorqueLimitOn()
+  Boolean IsOriginReturnSucceeded()
+  ErrorCode SetAccelRate(Double rate)
+  ErrorCode SetDecelRate(Double rate)
+  ErrorCode SetSineMotion(Boolean sineMotion)
+  ErrorCode SetFulcrumSpan(Double span)
+  ErrorCode SetEncoderStepLength(Double length)
+  ErrorCode SetMaxSpeed(Double speed)
+  ErrorCode SetCWTorqueLimit(Double cWlimit)
+  ErrorCode SetCCWTorqueLimit(Double cCWlimit)
+  ErrorCode GetErrorCode()
+  Status GetStatus()
+
+Tipos anidados/enums:
+  SurugaSeiki.Motion.AxisComponents+ErrorCode
+  SurugaSeiki.Motion.AxisComponents+Status
+
+====================================================================================================
+SurugaSeiki.Motion.AxisComponents+ErrorCode
+====================================================================================================
+
+Campos:
+  Int32 value__
+  static ErrorCode None
+  static ErrorCode ServoAlarm
+  static ErrorCode ServoOff
+  static ErrorCode Moving
+  static ErrorCode NotConnected
+  static ErrorCode Limit
+  static ErrorCode Origin
+  static ErrorCode Parameter
+  static ErrorCode Torque
+
+====================================================================================================
+SurugaSeiki.Motion.AxisComponents+Status
+====================================================================================================
+
+Campos:
+  Int32 value__
+  static Status ServoAlarm
+  static Status ServoOff
+  static Status Stopping
+  static Status InPosition
+  static Status Moving
+  static Status NotConnected
+  static Status CwLimit
+  static Status CcwLimit
+  static Status CwTorqueLimit
+  static Status CcwTorqueLimit

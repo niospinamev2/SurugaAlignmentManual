@@ -1,0 +1,131 @@
+====================================================================================================
+SurugaSeiki.Motion.AngleAdjustment
+====================================================================================================
+
+Constructores:
+  AngleAdjustment(UInt16 id)
+
+Metodos:
+  ErrorCode Start()
+  ErrorCode Stop()
+  Status GetStatus()
+  UInt32 GetErrorAxisID()
+  AdjustingStatus GetAdjustingStatus()
+  UInt32 GetProfilePacketSumIndex(ProfileDataType profileDataType)
+  ProfileData RequestProfileData(ProfileDataType profileDataType, UInt32 index)
+  ErrorCode SetParameter(AngleAdjustmentParameter parameter)
+  ErrorCode SetParameter(AngleAdjustmentParameter parameter, RotationCenter rotationCenter)
+
+Tipos anidados/enums:
+  SurugaSeiki.Motion.AngleAdjustment+ErrorCode
+  SurugaSeiki.Motion.AngleAdjustment+Status
+  SurugaSeiki.Motion.AngleAdjustment+AdjustingStatus
+  SurugaSeiki.Motion.AngleAdjustment+ProfileDataType
+  SurugaSeiki.Motion.AngleAdjustment+AngleAdjustmentParameter
+  SurugaSeiki.Motion.AngleAdjustment+ProfileData
+
+====================================================================================================
+SurugaSeiki.Motion.AngleAdjustment+AdjustingStatus
+====================================================================================================
+
+Campos:
+  Int32 value__
+  static AdjustingStatus NotAdjusting
+  static AdjustingStatus Initializing
+  static AdjustingStatus ContactingZ
+  static AdjustingStatus AdjustingTx
+  static AdjustingStatus AdjustingTy
+
+====================================================================================================
+SurugaSeiki.Motion.AngleAdjustment+AngleAdjustmentParameter
+====================================================================================================
+
+Campos:
+  Double gap
+  UInt16 signalChNumber
+  Double signalLowerLimit
+  UInt16 unlockDOutChNumber
+  Boolean unlockDOutControlOn
+  Boolean lockUnlockAdjustEnbale
+  Double lockUnlockDifference
+  UInt16 contactAxisNumber
+  Double contactSearchRange
+  Double contactSearchSpeed
+  UInt32 contactSmoothing
+  UInt32 contactSensitivity
+  Double pushDistance
+  UInt16 angleAxisNumberTx
+  UInt16 angleAxisNumberTy
+  Double angleSearchRangeTx
+  Double angleSearchRangeTy
+  Double angleSearchSpeedTx
+  Double angleSearchSpeedTy
+  UInt32 angleSmoothingTx
+  UInt32 angleSmoothingTy
+  UInt32 angleSensitivityTx
+  UInt32 angleSensitivityTy
+  UInt16 angleJudgeCountTx
+  UInt16 angleJudgeCountTy
+  Double angleConvergentRangeTx
+  Double angleConvergentRangeTy
+  UInt16 angleComparisonCount
+  UInt16 angleMaxCount
+
+====================================================================================================
+SurugaSeiki.Motion.AngleAdjustment+ErrorCode
+====================================================================================================
+
+Campos:
+  Int32 value__
+  static ErrorCode None
+  static ErrorCode Axis
+  static ErrorCode Adjusting
+  static ErrorCode Parameter
+
+====================================================================================================
+SurugaSeiki.Motion.AngleAdjustment+ProfileData
+====================================================================================================
+
+Campos:
+  UInt16 mainAxisNumber
+  UInt16 sub1AxisNumber
+  UInt16 sub2AxisNumber
+  UInt16 signalCh1Number
+  UInt16 signalCh2Number
+  UInt32 packetIndex
+  UInt32 dataCount
+  Double[] mainPositionList
+  Double[] sub1PositionList
+  Double[] sub2PositionList
+  Double[] signalCh1List
+  Double[] signalCh2List
+
+====================================================================================================
+SurugaSeiki.Motion.AngleAdjustment+ProfileDataType
+====================================================================================================
+
+Campos:
+  Int32 value__
+  static ProfileDataType ContactZ
+  static ProfileDataType AdjustmentTx
+  static ProfileDataType AdjustmentTy
+
+====================================================================================================
+SurugaSeiki.Motion.AngleAdjustment+Status
+====================================================================================================
+
+Campos:
+  Int32 value__
+  static Status Stopping
+  static Status Success
+  static Status Adjusting
+  static Status ProfileDataOver
+  static Status InvalidParameter
+  static Status ServoIsNotReady
+  static Status ServoIsAlarm
+  static Status StageOnLimit
+  static Status SignalLowerLimit
+  static Status CouldnotContact
+  static Status AdjustCountOver
+  static Status AngleAdjustRnageOver
+  static Status LostContact

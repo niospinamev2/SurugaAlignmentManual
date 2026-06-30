@@ -1,0 +1,58 @@
+====================================================================================================
+SurugaSeiki.Motion.Axis3D
+====================================================================================================
+
+Constructores:
+  Axis3D(UInt16 mainStageNumberX, UInt16 mainStageNumberY, UInt16 mainStageNumberZ)
+
+Metodos:
+  ErrorCode SetAxisNumber(UInt16 mainStageNumberX, UInt16 mainStageNumberY, UInt16 mainStageNumberZ)
+  UInt16[] GetAxisNumber()
+  ErrorCode MoveAbsolute(Point3D targetPosition)
+  ErrorCode MoveAbsolute(Double targetPositionX, Double targetPositionY, Double targetPositionZ)
+  ErrorCode MoveAbsolute(Point3D targetPosition, UInt16 dOutId, Int16 dOutOnDelayTime, Int16 dOutOffDelayTime)
+  ErrorCode MoveAbsolute(Double targetPositionX, Double targetPositionY, Double targetPositionZ, UInt16 dOutId, Int16 dOutOnDelayTime, Int16 dOutOffDelayTime)
+  ErrorCode MoveRelative(Point3D targetDistance)
+  ErrorCode MoveRelative(Double targetDistanceX, Double targetDistanceY, Double targetDistanceZ)
+  ErrorCode MoveRelative(Point3D targetDistance, UInt16 dOutId, Int16 dOutOnDelayTime, Int16 dOutOffDelayTime)
+  ErrorCode MoveRelative(Double targetDistanceX, Double targetDistanceY, Double targetDistanceZ, UInt16 dOutId, Int16 dOutOnDelayTime, Int16 dOutOffDelayTime)
+  ErrorCode Stop()
+  Point3D GetTargetPosition()
+  Point3D GetActualPosition()
+  Boolean IsMoving()
+  ErrorCode SetSpeed(Double speed)
+  ErrorCode SetAccelRate(Double accelRate)
+  ErrorCode SetDecelRate(Double decelRate)
+  ErrorCode SetStageNumber(UInt16 mainStageNumberX, UInt16 mainStageNumberY, UInt16 mainStageNumberZ)
+  ErrorCode SetSubStageNumber(UInt16 subStageNumberX, UInt16 subStageNumberY, UInt16 subStageNumberZ)
+  ErrorCode SetRotationCenter(Double rotationOffsetX, Double rotationOffsetY, Double rotationOffsetZ)
+  ErrorCode GetErrorCode()
+  Status GetStatus()
+
+Tipos anidados/enums:
+  SurugaSeiki.Motion.Axis3D+Point3D
+  SurugaSeiki.Motion.Axis3D+RotationCenter
+
+====================================================================================================
+SurugaSeiki.Motion.Axis3D+Point3D
+====================================================================================================
+
+Campos:
+  Double X
+  Double Y
+  Double Z
+
+====================================================================================================
+SurugaSeiki.Motion.Axis3D+RotationCenter
+====================================================================================================
+
+Campos:
+  UInt16 mainStageNumberX
+  UInt16 mainStageNumberY
+  UInt16 mainStageNumberZ
+  UInt16 subStageNumberX
+  UInt16 subStageNumberY
+  UInt16 subStageNumberZ
+  Double offsetX
+  Double offsetY
+  Double offsetZ

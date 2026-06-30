@@ -1,0 +1,36 @@
+====================================================================================================
+SurugaSeiki.Motion.Axis2D
+====================================================================================================
+
+Constructores:
+  Axis2D(UInt16 mainStageNumber, UInt16 subStageNumber)
+
+Metodos:
+  ErrorCode SetAxisNumber(UInt16 mainStageNumber, UInt16 subStageNumber)
+  UInt16[] GetAxisNumber()
+  ErrorCode MoveAbsolute(Point targetPosition)
+  ErrorCode MoveAbsolute(Double mainTargetPosition, Double subTargetPosition)
+  ErrorCode MoveRelative(Point targetDistance)
+  ErrorCode MoveRelative(Double mainDistance, Double subDistance)
+  ErrorCode MoveAbsoluteAngle(Double mainTargetPosition, Double subAngle)
+  ErrorCode MoveRelativeAngle(Double mainDistance, Double subAngle)
+  ErrorCode Stop()
+  Point GetTargetPosition()
+  Point GetActualPosition()
+  Boolean IsMoving()
+  ErrorCode SetSpeed(Double speed)
+  ErrorCode SetAccelRate(Double rate)
+  ErrorCode SetDecelRate(Double rate)
+  ErrorCode GetErrorCode()
+  Status GetStatus()
+
+Tipos anidados/enums:
+  SurugaSeiki.Motion.Axis2D+Point
+
+====================================================================================================
+SurugaSeiki.Motion.Axis2D+Point
+====================================================================================================
+
+Campos:
+  Double X
+  Double Y

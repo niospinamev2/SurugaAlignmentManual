@@ -1,0 +1,86 @@
+
+====================================================================================================
+SurugaSeiki.Motion.Profile
+====================================================================================================
+
+Constructores:
+  Profile()
+
+Metodos:
+  ErrorCode Start()
+  ErrorCode Stop()
+  Status GetProfileStatus()
+  UInt32 GetProfilePacketSumIndex()
+  ProfileData RequestProfileData(UInt32 index)
+  ProfileData RequestProfileData(UInt32 index, Boolean isRotationCenterShift)
+  ErrorCode SetProfile(ProfileParameter parameter)
+  ErrorCode SetProfile(ProfileParameter parameter, RotationCenter rotationCenter)
+
+Tipos anidados/enums:
+  SurugaSeiki.Motion.Profile+ErrorCode
+  SurugaSeiki.Motion.Profile+Status
+  SurugaSeiki.Motion.Profile+ProfileParameter
+  SurugaSeiki.Motion.Profile+ProfileData
+
+====================================================================================================
+SurugaSeiki.Motion.Profile+ErrorCode
+====================================================================================================
+
+Campos:
+  Int32 value__
+  static ErrorCode None
+  static ErrorCode Axis
+  static ErrorCode Profiling
+  static ErrorCode Parameter
+
+====================================================================================================
+SurugaSeiki.Motion.Profile+ProfileData
+====================================================================================================
+
+Campos:
+  UInt16 mainAxisNumber
+  UInt16 sub1AxisNumber
+  UInt16 sub2AxisNumber
+  UInt16 signalCh1Number
+  UInt16 signalCh2Number
+  UInt32 packetIndex
+  UInt32 dataCount
+  Double[] mainPositionList
+  Double[] sub1PositionList
+  Double[] sub2PositionList
+  Double[] signalCh1List
+  Double[] signalCh2List
+
+====================================================================================================
+SurugaSeiki.Motion.Profile+ProfileParameter
+====================================================================================================
+
+Campos:
+  UInt16 mainAxisNumber
+  UInt16 sub1AxisNumber
+  UInt16 sub2AxisNumber
+  UInt16 signalCh1Number
+  UInt16 signalCh2Number
+  Double mainRange
+  Double sub1Range
+  Double sub2Range
+  Double speed
+  Double accelRate
+  Double decelRate
+  UInt32 smoothing
+
+====================================================================================================
+SurugaSeiki.Motion.Profile+Status
+====================================================================================================
+
+Campos:
+  Int32 value__
+  static Status Stopping
+  static Status Success
+  static Status Profiling
+  static Status ProfileDataOver
+  static Status InvalidParameter
+  static Status ServoIsNotReady
+  static Status ServoIsAlarm
+  static Status StageOnLimit
+  static Status TorqueLimit
