@@ -1,0 +1,225 @@
+\documentclass[../../main.tex]{subfiles}
+
+\begin{document}
+
+\chapter{Operación básica}
+
+\section{Pantallas y configuraciones}
+
+%===========================================================
+%===========================================================
+%===========================================================
+
+\subsection{Main screen}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{GUISuruga/01_main_screen.png}
+    \caption{Pendiente.}
+    %\label{fig:frontDA1000}
+\end{figure}
+
+%===========================================================
+%===========================================================
+%===========================================================
+
+\subsection{Jog screen}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{GUISuruga/02_jog_screen.png}
+    \caption{Pendiente.}
+    %\label{fig:frontDA1000}
+\end{figure}
+
+%===========================================================
+%===========================================================
+%===========================================================
+
+\subsection{Profile screen}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{GUISuruga/03_profile_screen.png}
+    \caption{Pendiente.}
+    %\label{fig:frontDA1000}
+\end{figure}
+
+%===========================================================
+%===========================================================
+%               Optical alignment screen
+%===========================================================
+%===========================================================
+
+\subsection{Optical alignment screen}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{GUISuruga/04_optical_alignment_screen.png}
+    \caption{Pendiente.}
+    %\label{fig:frontDA1000}
+\end{figure}
+
+El usuario puede llevar a cabo los siguientes métodos de alineamiento:
+
+\begin{itemize}
+    \item \textbf{Alineamiento Single (Single Alignment):} Realiza el alineamiento utilizando un único eje. 
+    \item \textbf{Alineamiento Flat (Flat Alignment):} Realiza el alineamiento en un plano utilizando dos ejes. 
+    \item \textbf{Alineamiento Focus (Focus Alignment):} Además del alineamiento Flat, realiza el ajuste sobre el eje óptico empleando tres ejes. 
+    \item \textbf{Alineamiento por rotación de dos canales (2ch Rotation Alignment):} Realiza un alineamiento Flat utilizando dos señales ópticas y corrige el ángulo alrededor del eje óptico en función de la posición y de la distancia configurada. 
+    \item \textbf{Alineamiento MMF (MMF Rotation Alignment):} Posiciona una fibra multimodo (MMF, Multi-Mode Fiber) en el lado de salida y corrige la posición y el ángulo del arreglo de fibras en el lado de entrada. 
+\end{itemize}
+
+%===========================================================
+%===========================================================
+
+\subsubsection{Alineamiento Flat (Flat Alignment):}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{Alignment/FlatAlignment.png}
+    \caption{Pendiente.}
+    %\label{fig:frontDA1000}
+\end{figure}
+
+Se parte de la condición en la que la fibra y el Device Under Test (DUT) se encuentran desalineados, por lo que el sistema desconoce la ubicación del punto de máxima potencia óptica. Debido a ello, no es posible iniciar directamente un Peak Search, ya que este requiere partir de una señal detectable para localizar el máximo.
+
+Como primer paso, el algoritmo ejecuta un Field Search, cuyo objetivo es explorar el área alrededor de la posición inicial hasta encontrar una potencia lo suficientemente grande. La condición que determina el éxito de esta etapa es:
+
+\begin{equation}
+P_{\mathrm{OPM}} > \mathrm{FieldSearchThreshold}
+\label{eq:field_search_threshold}
+\end{equation}
+
+Donde FieldSearchThreshold corresponde al nivel mínimo de potencia, expresada en voltios haciendo uso de la salida analógica del OPM, que indica que el sistema ha encontrado una señal válida.
+
+Durante esta etapa, el movimiento sigue una trayectoria en espiral cuadrada que se expande progresivamente alrededor del punto inicial. En cuanto la potencia medida supera el umbral establecido, el algoritmo abandona el Field Search e inicia el proceso de Peak Search, encargado de localizar con precisión el punto de máxima potencia.
+
+Si la trayectoria alcanza los límites definidos por SearchRangeX o SearchRangeY sin encontrar una señal superior a FieldSearchThreshold, el proceso finaliza con el estado FieldSearchRangeOver, indicando que no fue posible localizar una señal dentro del área de búsqueda especificada.
+
+El comportamiento del algoritmo empleado para un alineamiento tipo flat está determinado por un conjunto de parámetros que definen el área de búsqueda, la resolución del barrido y el criterio para iniciar la búsqueda fina. En la Tabla \ref{tab:parameters} se describen los parámetros más relevantes en conjunto con su equivalente en el DLL provisto por Suruga Seiki.
+
+
+\begin{longtblr}[
+    caption={Parámetros de configuración},
+    label={tab:parameters},
+]{
+    width=\textwidth,
+    colspec={|Q[c]|X|Q[c]|},
+    hlines,
+}
+
+\SetRow{bg=gray9}
+\textbf{Parámetro} &
+\textbf{Descripción} &
+\textbf{Tipo .NET} \\
+
+%===========================================================
+% Alignment
+%===========================================================
+\SetRow{bg=SkyBlue}
+\SetCell[c=3]{c}
+Alignment \\
+
+mainStageNumberX &
+Número del eje principal utilizado para el movimiento en X. &
+UInt16 \\
+
+mainStageNumberY &
+Número del eje principal utilizado para el movimiento en Y. &
+UInt16 \\
+
+subStageNumberXY & 
+Número del sub-eje utilizado para el movimiento en XY. & 
+UInt16 \\
+
+subAngleX & 
+Ángulo del sub-eje para la alineación en X. & 
+Double \\
+
+subAngleY & 
+Ángulo del sub-eje para la alineación en Y. & 
+Double \\
+
+%===========================================================
+% Sensor
+%===========================================================
+\SetRow{bg=SweetSalmon}
+\SetCell[c=3]{c}
+Sensor \\
+
+pmCh & Canal del medidor de potencia utilizado durante la alineación. & UInt16 \\
+
+analogCh & Canal de entrada analógica utilizado para la medición. & UInt16 \\
+
+pmAutoRangeUpOn & Habilita el incremento automático del rango del medidor de potencia. & Boolean \\
+
+pmInitRangeSettingOn & Habilita el uso de un rango inicial para el medidor de potencia. & Boolean \\
+
+pmInitRange & Valor del rango inicial del medidor de potencia. & Int16 \\
+
+%===========================================================
+% Threshold
+%===========================================================
+\SetRow{bg=Periwinkle}
+\SetCell[c=3]{c}
+Threshold \\
+
+fieldSearchThreshold & Umbral utilizado durante la búsqueda de campo. & Double \\
+
+peakSearchThreshold & Umbral utilizado durante la búsqueda del pico de señal. & Double \\
+
+%===========================================================
+% Search
+%===========================================================
+\SetRow{bg=MutedTeal}
+\SetCell[c=3]{c}
+Search \\
+
+searchRangeX & Rango de búsqueda en la dirección X. & Double \\
+
+searchRangeY & Rango de búsqueda en la dirección Y. & Double \\
+
+fieldSearchPitchX & Paso de exploración en X durante la búsqueda de campo. & Double \\
+
+fieldSearchPitchY & Paso de exploración en Y durante la búsqueda de campo. & Double \\
+
+fieldSearchFirstPitchX & Primer paso de exploración en X durante la búsqueda de campo. & Double \\
+
+fieldSearchSpeedX & Velocidad de exploración en X durante la búsqueda de campo. & Double \\
+
+fieldSearchSpeedY & Velocidad de exploración en Y durante la búsqueda de campo. & Double \\
+
+peakSearchSpeedX & Velocidad de búsqueda del pico en X. & Double \\
+
+peakSearchSpeedY & Velocidad de búsqueda del pico en Y. & Double \\
+
+smoothingRangeX & Ventana de suavizado aplicada a los datos en X. & UInt32 \\
+
+smoothingRangeY & Ventana de suavizado aplicada a los datos en Y. & UInt32 \\
+
+centroidThresholdX & Umbral para el cálculo del centroide en X. & Double \\
+
+centroidThresholdY & Umbral para el cálculo del centroide en Y. & Double \\
+
+%===========================================================
+% Judge
+%===========================================================
+\SetRow{bg=ApricotCream}
+\SetCell[c=3]{c}
+Judge \\
+
+convergentRangeX & Rango de convergencia permitido en X. & Double \\
+
+convergentRangeY & Rango de convergencia permitido en Y. & Double \\
+
+comparisonCount & Número de comparaciones realizadas para verificar la convergencia. & UInt16 \\
+
+maxRepeatCount & Número máximo de repeticiones permitidas durante el proceso de alineación. & UInt16 \\
+
+\end{longtblr}
+
+
+\end{document}
+
+

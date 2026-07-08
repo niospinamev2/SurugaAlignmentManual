@@ -1,0 +1,1397 @@
+\documentclass[../../main.tex]{subfiles}
+
+\begin{document}
+
+\chapter{Clases de la API}
+
+
+%===========================================================
+%===========================================================
+%                       Clase System
+%===========================================================
+%===========================================================
+
+\section{Clase System}
+
+La clase \texttt{System} constituye el punto de acceso principal a las funciones globales del controlador Suruga Seiki. A través de esta clase es posible consultar las capacidades del sistema, verificar el estado de la comunicación con el controlador, obtener información sobre la versión del software y gestionar operaciones generales relacionadas con la conexión y el diagnóstico del equipo.
+
+La Tabla~\ref{tab:system_members} resume los principales miembros públicos de la clase, agrupados en propiedades, métodos, campos y tipos anidados. Para cada elemento se indica su propósito, el tipo de dato asociado y el nivel de acceso proporcionado por la API.
+
+%================================================================
+%================================================================
+%================================================================
+
+\footnotesize
+
+\begin{longtblr}[
+    caption={Miembros de la clase \texttt{System}},
+    label={tab:system_members},
+]{
+    width=\textwidth,
+    colspec={
+    |Q[c,wd=0.28\textwidth]|
+    X|
+    Q[c,wd=0.12\textwidth]|
+    Q[c,wd=0.10\textwidth]|
+    },
+    hlines,
+}
+
+\SetRow{bg=gray!50}
+\textbf{Miembro} &
+\textbf{Descripción} &
+\textbf{Tipo .NET} &
+\textbf{Acceso} \\
+
+%===========================================================
+% Propiedades
+%===========================================================
+\SetRow{bg=gray9}
+\SetCell[c=4]{c}
+Propiedades \\
+
+MaxAxisStageNumber &
+Número máximo de ejes de posicionamiento soportados por el sistema. &
+UInt16 &
+get/set \\
+
+MaxAnalogInputChNumber &
+Número máximo de canales de entrada analógica disponibles. &
+UInt16 &
+get/set \\
+
+MaxAlignmentNumber &
+Número máximo de instancias de alineación soportadas por el sistema. &
+UInt16 &
+get/set \\
+
+MaxAngleAdjustmentNumber &
+Número máximo de módulos de ajuste angular soportados. &
+UInt16 &
+get/set \\
+
+MaxDInChNumber &
+Número máximo de canales de entrada digital disponibles. &
+UInt16 &
+get/set \\
+
+MaxDOutChNumber &
+Número máximo de canales de salida digital disponibles. &
+UInt16 &
+get/set \\
+
+MaxAnalogOutputChNumber &
+Número máximo de canales de salida analógica disponibles. &
+UInt16 &
+get/set \\
+
+MaxPowerMeterChNumber &
+Número máximo de canales del medidor de potencia soportados. &
+UInt16 &
+get/set \\
+
+Instance &
+Instancia única (Singleton) de la clase \texttt{System}. &
+System &
+get \\
+
+Connected &
+Indica si existe una conexión activa con el controlador. &
+Boolean &
+get \\
+
+DllVersion &
+Versión de la biblioteca dinámica (DLL) utilizada por la API. &
+String &
+get \\
+
+SystemVersion &
+Versión del firmware o software del sistema de control. &
+String &
+get \\
+
+%===========================================================
+% Métodos
+%===========================================================
+\SetRow{bg=gray9}
+\SetCell[c=4]{c}
+Métodos \\
+
+IsError() &
+Determina si el sistema presenta algún estado de error. &
+Boolean &
+-- \\
+
+GetCurrentErrorCode() &
+Obtiene el código del error actual del sistema. &
+ErrorCode &
+-- \\
+
+IsEmergencyAsserted() &
+Indica si la condición de parada de emergencia está activada. &
+Boolean &
+-- \\
+
+SetAddress(String addr) &
+Establece la dirección del controlador utilizada para la comunicación. &
+Void &
+-- \\
+
+DisconnectAds() &
+Finaliza la conexión ADS con el controlador. &
+Void &
+-- \\
+
+%===========================================================
+% Campos
+%===========================================================
+\SetRow{bg=gray9}
+\SetCell[c=4]{c}
+Campos \\
+
+MaxProfileNumber &
+Número máximo de perfiles soportados por el sistema. &
+UInt16 &
+static \\
+
+ProfileDataPacketMaxDataNumber &
+Número máximo de datos que puede contener un paquete de datos de perfil. &
+UInt32 &
+static \\
+
+%===========================================================
+% Tipos anidados / Enums
+%===========================================================
+\SetRow{bg=gray9}
+\SetCell[c=4]{c}
+Tipos anidados / Enums \\
+
+ErrorCode &
+Enumeración que define los posibles códigos de error devueltos por la clase \texttt{System}. &
+Enum &
+-- \\
+
+\end{longtblr}
+
+\normalsize
+
+%================================================================
+%================================================================
+%================================================================
+
+
+
+%===========================================================
+%===========================================================
+%                   Clase AxisComponents
+%===========================================================
+%===========================================================
+
+\section{Clase AxisComponents}
+
+%================================================================
+%================================================================
+%================================================================
+
+\footnotesize
+
+\begin{longtblr}[
+    caption={Miembros de la clase \texttt{AxisComponents}},
+    label={tab:axiscomponents_members},
+]{
+    width=\textwidth,
+    colspec={
+    |Q[c,wd=0.28\textwidth]|
+    X|
+    Q[c,wd=0.12\textwidth]|
+    Q[c,wd=0.10\textwidth]|
+    },
+    hlines,
+}
+
+\SetRow{bg=gray!50}
+\textbf{Miembro} &
+\textbf{Descripción} &
+\textbf{Tipo .NET} &
+\textbf{Acceso} \\
+
+%===========================================================
+% Constructores
+%===========================================================
+\SetRow{bg=gray9}
+\SetCell[c=4]{c}
+Constructores \\
+
+AxisComponents(UInt16 axisNumber) &
+Inicializa una nueva instancia de la clase asociada al eje especificado. &
+Constructor &
+-- \\
+
+%===========================================================
+% Métodos
+%===========================================================
+\SetRow{bg=gray9}
+\SetCell[c=4]{c}
+Métodos \\
+
+MoveAbsolute(Double position) &
+Desplaza el eje hasta una posición absoluta. &
+ErrorCode &
+-- \\
+
+MoveRelative(Double distance) &
+Desplaza el eje una distancia relativa respecto a su posición actual. &
+ErrorCode &
+-- \\
+
+ReturnOrigin() &
+Ejecuta el procedimiento de retorno al origen del eje. &
+ErrorCode &
+-- \\
+
+Stop() &
+Detiene inmediatamente el movimiento del eje. &
+ErrorCode &
+-- \\
+
+TurnOnServo() &
+Activa el servomotor del eje. &
+ErrorCode &
+-- \\
+
+TurnOffServo() &
+Desactiva el servomotor del eje. &
+ErrorCode &
+-- \\
+
+ResetError() &
+Restablece el estado de error del eje. &
+ErrorCode &
+-- \\
+
+GetTargetPosition() &
+Obtiene la posición objetivo configurada para el eje. &
+Double &
+-- \\
+
+GetActualPosition() &
+Obtiene la posición actual del eje. &
+Double &
+-- \\
+
+IsServoOn() &
+Indica si el servomotor se encuentra activado. &
+Boolean &
+-- \\
+
+IsServoAlarm() &
+Indica si el servomotor presenta una condición de alarma. &
+Boolean &
+-- \\
+
+IsMoving() &
+Indica si el eje se encuentra en movimiento. &
+Boolean &
+-- \\
+
+IsOriginSignalOn() &
+Indica si la señal del sensor de origen está activa. &
+Boolean &
+-- \\
+
+IsCwLimitSignalOn() &
+Indica si el interruptor de límite en sentido horario (CW) está activo. &
+Boolean &
+-- \\
+
+IsCcwLimitSignalOn() &
+Indica si el interruptor de límite en sentido antihorario (CCW) está activo. &
+Boolean &
+-- \\
+
+IsCwTorqueLimitOn() &
+Indica si se ha alcanzado el límite de par en sentido horario. &
+Boolean &
+-- \\
+
+IsCcwTorqueLimitOn() &
+Indica si se ha alcanzado el límite de par en sentido antihorario. &
+Boolean &
+-- \\
+
+IsOriginReturnSucceeded() &
+Indica si el procedimiento de retorno al origen finalizó correctamente. &
+Boolean &
+-- \\
+
+SetAccelRate(Double rate) &
+Configura la tasa de aceleración del eje. &
+ErrorCode &
+-- \\
+
+SetDecelRate(Double rate) &
+Configura la tasa de desaceleración del eje. &
+ErrorCode &
+-- \\
+
+SetSineMotion(Boolean sineMotion) &
+Habilita o deshabilita el modo de movimiento senoidal. &
+ErrorCode &
+-- \\
+
+SetFulcrumSpan(Double span) &
+Configura la distancia del brazo o fulcro utilizada durante el movimiento. &
+ErrorCode &
+-- \\
+
+SetEncoderStepLength(Double length) &
+Configura la longitud correspondiente a un paso del codificador. &
+ErrorCode &
+-- \\
+
+SetMaxSpeed(Double speed) &
+Establece la velocidad máxima permitida para el eje. &
+ErrorCode &
+-- \\
+
+SetCWTorqueLimit(Double cWlimit) &
+Configura el límite de par en sentido horario (CW). &
+ErrorCode &
+-- \\
+
+SetCCWTorqueLimit(Double cCWlimit) &
+Configura el límite de par en sentido antihorario (CCW). &
+ErrorCode &
+-- \\
+
+GetErrorCode() &
+Obtiene el código de error actual del eje. &
+ErrorCode &
+-- \\
+
+GetStatus() &
+Obtiene el estado actual del eje. &
+Status &
+-- \\
+
+%===========================================================
+% Tipos anidados / Enums
+%===========================================================
+\SetRow{bg=gray9}
+\SetCell[c=4]{c}
+Tipos anidados / Enums \\
+
+ErrorCode &
+Enumeración que define los posibles códigos de error devueltos por la clase \texttt{AxisComponents}. &
+Enum &
+-- \\
+
+Status &
+Enumeración que representa los distintos estados de funcionamiento del eje. &
+Enum &
+-- \\
+
+\end{longtblr}
+
+\normalsize
+
+%================================================================
+%================================================================
+%================================================================
+
+
+%===========================================================
+%===========================================================
+%                       Clase Axis2D
+%===========================================================
+%===========================================================
+
+\section{Clase Axis2D}
+
+%================================================================
+%================================================================
+%================================================================
+
+\footnotesize
+
+\begin{longtblr}[
+    caption={Miembros de la clase \texttt{Axis2D}},
+    label={tab:axis2d_members},
+]{
+    width=\textwidth,
+    colspec={
+    |Q[c,wd=0.28\textwidth]|
+    X|
+    Q[c,wd=0.12\textwidth]|
+    Q[c,wd=0.10\textwidth]|
+    },
+    hlines,
+}
+
+\SetRow{bg=gray!50}
+\textbf{Miembro} &
+\textbf{Descripción} &
+\textbf{Tipo .NET} &
+\textbf{Acceso} \\
+
+%===========================================================
+% Constructores
+%===========================================================
+\SetRow{bg=gray9}
+\SetCell[c=4]{c}
+Constructores \\
+
+Axis2D(UInt16 mainStageNumber, UInt16 subStageNumber) &
+Inicializa una nueva instancia de la clase asociada a un sistema de posicionamiento bidimensional compuesto por dos ejes. &
+Constructor &
+-- \\
+
+%===========================================================
+% Métodos
+%===========================================================
+\SetRow{bg=gray9}
+\SetCell[c=4]{c}
+Métodos \\
+
+SetAxisNumber(UInt16 mainStageNumber, UInt16 subStageNumber) &
+Asigna los identificadores de los ejes principal y secundario utilizados por el sistema bidimensional. &
+ErrorCode &
+-- \\
+
+GetAxisNumber() &
+Obtiene los identificadores de los ejes asociados al sistema bidimensional. &
+UInt16[] &
+-- \\
+
+MoveAbsolute(Point targetPosition) &
+Desplaza ambos ejes hasta una posición absoluta especificada mediante una estructura de coordenadas. &
+ErrorCode &
+-- \\
+
+MoveAbsolute(Double mainTargetPosition, Double subTargetPosition) &
+Desplaza ambos ejes hasta las posiciones absolutas indicadas para cada eje. &
+ErrorCode &
+-- \\
+
+MoveRelative(Point targetDistance) &
+Realiza un desplazamiento relativo de ambos ejes utilizando una estructura de coordenadas. &
+ErrorCode &
+-- \\
+
+MoveRelative(Double mainDistance, Double subDistance) &
+Realiza un desplazamiento relativo independiente para cada eje. &
+ErrorCode &
+-- \\
+
+MoveAbsoluteAngle(Double mainTargetPosition, Double subAngle) &
+Desplaza el eje principal a una posición absoluta mientras posiciona el eje secundario según un ángulo especificado. &
+ErrorCode &
+-- \\
+
+MoveRelativeAngle(Double mainDistance, Double subAngle) &
+Realiza un desplazamiento relativo del eje principal y posiciona el eje secundario mediante un ángulo especificado. &
+ErrorCode &
+-- \\
+
+Stop() &
+Detiene el movimiento de ambos ejes. &
+ErrorCode &
+-- \\
+
+GetTargetPosition() &
+Obtiene la posición objetivo del sistema bidimensional. &
+Point &
+-- \\
+
+GetActualPosition() &
+Obtiene la posición actual del sistema bidimensional. &
+Point &
+-- \\
+
+IsMoving() &
+Indica si alguno de los ejes se encuentra en movimiento. &
+Boolean &
+-- \\
+
+SetSpeed(Double speed) &
+Configura la velocidad de desplazamiento del sistema bidimensional. &
+ErrorCode &
+-- \\
+
+SetAccelRate(Double rate) &
+Configura la tasa de aceleración del movimiento. &
+ErrorCode &
+-- \\
+
+SetDecelRate(Double rate) &
+Configura la tasa de desaceleración del movimiento. &
+ErrorCode &
+-- \\
+
+GetErrorCode() &
+Obtiene el código de error actual del sistema bidimensional. &
+ErrorCode &
+-- \\
+
+GetStatus() &
+Obtiene el estado actual del sistema bidimensional. &
+Status &
+-- \\
+
+%===========================================================
+% Tipos anidados / Enums
+%===========================================================
+\SetRow{bg=gray9}
+\SetCell[c=4]{c}
+Tipos anidados / Enums \\
+
+Point &
+Estructura que representa una posición bidimensional mediante las coordenadas de los ejes principal y secundario. &
+Struct &
+-- \\
+
+\end{longtblr}
+
+\normalsize
+
+%================================================================
+%================================================================
+%================================================================
+
+
+%===========================================================
+%===========================================================
+%                       Clase Axis3D
+%===========================================================
+%===========================================================
+
+\section{Clase Axis3D}
+
+%================================================================
+%================================================================
+%================================================================
+
+\footnotesize
+
+\begin{longtblr}[
+    caption={Miembros de la clase \texttt{Axis3D}},
+    label={tab:axis3d_members},
+]{
+    width=\textwidth,
+    colspec={
+        |Q[l,wd=0.28\textwidth]|
+        X|
+        Q[c,wd=0.12\textwidth]|
+        Q[c,wd=0.10\textwidth]|
+    },
+    hlines,
+}
+
+\SetRow{bg=gray!50}
+\textbf{Miembro} &
+\textbf{Descripción} &
+\textbf{Tipo .NET} &
+\textbf{Acceso} \\
+
+%===========================================================
+% Constructores
+%===========================================================
+\SetRow{bg=gray9}
+\SetCell[c=4]{c}
+Constructores \\
+
+Axis3D(UInt16 mainStageNumberX, UInt16 mainStageNumberY, UInt16 mainStageNumberZ) &
+Inicializa una nueva instancia de la clase asociada a un sistema de posicionamiento tridimensional compuesto por tres ejes. &
+Constructor &
+-- \\
+
+%===========================================================
+% Métodos
+%===========================================================
+\SetRow{bg=gray9}
+\SetCell[c=4]{c}
+Métodos \\
+
+SetAxisNumber(UInt16 mainStageNumberX, UInt16 mainStageNumberY, UInt16 mainStageNumberZ) &
+Asigna los identificadores de los ejes utilizados por el sistema tridimensional. &
+ErrorCode &
+-- \\
+
+GetAxisNumber() &
+Obtiene los identificadores de los ejes asociados al sistema tridimensional. &
+UInt16[] &
+-- \\
+
+MoveAbsolute(Point3D targetPosition) &
+Desplaza el sistema tridimensional hasta una posición absoluta especificada mediante una estructura de coordenadas. &
+ErrorCode &
+-- \\
+
+MoveAbsolute(Double targetPositionX, Double targetPositionY, Double targetPositionZ) &
+Desplaza el sistema tridimensional hasta las posiciones absolutas indicadas para cada eje. &
+ErrorCode &
+-- \\
+
+MoveAbsolute(Point3D targetPosition, UInt16 dOutId, Int16 dOutOnDelayTime, Int16 dOutOffDelayTime) &
+Desplaza el sistema tridimensional hasta una posición absoluta activando una salida digital durante el movimiento según los tiempos especificados. &
+ErrorCode &
+-- \\
+
+MoveAbsolute(Double targetPositionX, Double targetPositionY, Double targetPositionZ, UInt16 dOutId, Int16 dOutOnDelayTime, Int16 dOutOffDelayTime) &
+Desplaza el sistema tridimensional hasta las posiciones absolutas indicadas para cada eje activando una salida digital durante el movimiento. &
+ErrorCode &
+-- \\
+
+MoveRelative(Point3D targetDistance) &
+Realiza un desplazamiento relativo del sistema tridimensional utilizando una estructura de coordenadas. &
+ErrorCode &
+-- \\
+
+MoveRelative(Double targetDistanceX, Double targetDistanceY, Double targetDistanceZ) &
+Realiza un desplazamiento relativo independiente para cada eje. &
+ErrorCode &
+-- \\
+
+MoveRelative(Point3D targetDistance, UInt16 dOutId, Int16 dOutOnDelayTime, Int16 dOutOffDelayTime) &
+Realiza un desplazamiento relativo activando una salida digital durante el movimiento según los tiempos especificados. &
+ErrorCode &
+-- \\
+
+MoveRelative(Double targetDistanceX, Double targetDistanceY, Double targetDistanceZ, UInt16 dOutId, Int16 dOutOnDelayTime, Int16 dOutOffDelayTime) &
+Realiza un desplazamiento relativo independiente para cada eje activando una salida digital durante el movimiento. &
+ErrorCode &
+-- \\
+
+Stop() &
+Detiene el movimiento de los tres ejes. &
+ErrorCode &
+-- \\
+
+GetTargetPosition() &
+Obtiene la posición objetivo del sistema tridimensional. &
+Point3D &
+-- \\
+
+GetActualPosition() &
+Obtiene la posición actual del sistema tridimensional. &
+Point3D &
+-- \\
+
+IsMoving() &
+Indica si alguno de los ejes se encuentra en movimiento. &
+Boolean &
+-- \\
+
+SetSpeed(Double speed) &
+Configura la velocidad de desplazamiento del sistema tridimensional. &
+ErrorCode &
+-- \\
+
+SetAccelRate(Double accelRate) &
+Configura la tasa de aceleración del movimiento. &
+ErrorCode &
+-- \\
+
+SetDecelRate(Double decelRate) &
+Configura la tasa de desaceleración del movimiento. &
+ErrorCode &
+-- \\
+
+SetStageNumber(UInt16 mainStageNumberX, UInt16 mainStageNumberY, UInt16 mainStageNumberZ) &
+Configura los identificadores de los ejes principales utilizados por el sistema. &
+ErrorCode &
+-- \\
+
+SetSubStageNumber(UInt16 subStageNumberX, UInt16 subStageNumberY, UInt16 subStageNumberZ) &
+Configura los identificadores de los ejes secundarios utilizados por el sistema. &
+ErrorCode &
+-- \\
+
+SetRotationCenter(Double rotationOffsetX, Double rotationOffsetY, Double rotationOffsetZ) &
+Define el centro de rotación del sistema mediante los desplazamientos especificados para los ejes X, Y y Z. &
+ErrorCode &
+-- \\
+
+GetErrorCode() &
+Obtiene el código de error actual del sistema tridimensional. &
+ErrorCode &
+-- \\
+
+GetStatus() &
+Obtiene el estado actual del sistema tridimensional. &
+Status &
+-- \\
+
+%===========================================================
+% Tipos anidados / Estructuras
+%===========================================================
+\SetRow{bg=gray9}
+\SetCell[c=4]{c}
+Tipos anidados / Estructuras \\
+
+Point3D &
+Estructura que representa una posición tridimensional mediante las coordenadas X, Y y Z. &
+Struct &
+-- \\
+
+RotationCenter &
+Estructura que define los ejes y desplazamientos utilizados como centro de rotación del sistema. &
+Struct &
+-- \\
+
+\end{longtblr}
+
+\normalsize
+
+%================================================================
+%================================================================
+%================================================================
+
+%===========================================================
+%===========================================================
+%                     Clase Alignment
+%===========================================================
+%===========================================================
+
+\section{Clase Alignment}
+
+%================================================================
+%================================================================
+%================================================================
+
+\footnotesize
+
+\begin{longtblr}[
+    caption={Miembros de la clase \texttt{Alignment}},
+    label={tab:alignment_members},
+]{
+    width=\textwidth,
+    colspec={
+        |Q[l,wd=0.28\textwidth]|
+        X|
+        Q[c,wd=0.12\textwidth]|
+        Q[c,wd=0.10\textwidth]|
+    },
+    hlines,
+}
+
+\SetRow{bg=gray!50}
+\textbf{Miembro} &
+\textbf{Descripción} &
+\textbf{Tipo .NET} &
+\textbf{Acceso} \\
+
+%===========================================================
+% Constructores
+%===========================================================
+\SetRow{bg=gray9}
+\SetCell[c=4]{c}
+Constructores \\
+
+Alignment() &
+Inicializa una nueva instancia de la clase \texttt{Alignment}. &
+Constructor &
+-- \\
+
+Alignment(UInt16 id) &
+Inicializa una nueva instancia de la clase asociada al identificador de alineación especificado. &
+Constructor &
+-- \\
+
+%===========================================================
+% Métodos
+%===========================================================
+\SetRow{bg=gray9}
+\SetCell[c=4]{c}
+Métodos \\
+
+StartSingle() &
+Inicia el procedimiento de alineación de tipo \emph{Single}. &
+ErrorCode &
+-- \\
+
+StartFlat() &
+Inicia el procedimiento de alineación de tipo \emph{Flat}. &
+ErrorCode &
+-- \\
+
+StartFocus() &
+Inicia el procedimiento de alineación de tipo \emph{Focus}. &
+ErrorCode &
+-- \\
+
+StartTwoChRotation() &
+Inicia el procedimiento de alineación por rotación de dos canales. &
+ErrorCode &
+-- \\
+
+StartMMFRotation() &
+Inicia el procedimiento de alineación por rotación para fibra multimodo (MMF). &
+ErrorCode &
+-- \\
+
+StartLoopBack() &
+Inicia el procedimiento de alineación de tipo \emph{LoopBack}. &
+ErrorCode &
+-- \\
+
+StartCommon() &
+Inicia un procedimiento de alineación utilizando parámetros comunes. &
+ErrorCode &
+-- \\
+
+Stop() &
+Detiene el procedimiento de alineación en ejecución. &
+ErrorCode &
+-- \\
+
+GetErrorCode() &
+Obtiene el código de error actual del proceso de alineación. &
+ErrorCode &
+-- \\
+
+GetStatus() &
+Obtiene el estado actual del proceso de alineación. &
+Status &
+-- \\
+
+GetErrorAxisID() &
+Obtiene el identificador del eje responsable del error actual. &
+UInt32 &
+-- \\
+
+GetAligningStatus() &
+Obtiene el estado detallado del procedimiento de alineación. &
+StatusCode &
+-- \\
+
+GetProfilePacketSumIndex (ProfileDataType profileDataType) &
+Obtiene el número total de paquetes de datos disponibles para el perfil especificado. &
+UInt32 &
+-- \\
+
+RequestProfileData(ProfileDataType profileDataType, UInt32 index) &
+Solicita un paquete de datos correspondiente al perfil y al índice especificados. &
+ProfileData &
+-- \\
+
+RequestProfileData(ProfileDataType profileDataType, UInt32 index, Boolean isRotationCenterShift) &
+Solicita un paquete de datos del perfil considerando el desplazamiento del centro de rotación. &
+ProfileData &
+-- \\
+
+GetVoltage(UInt32 alignmentAInCh) &
+Obtiene el valor de tensión medido en el canal de entrada analógica especificado. &
+Double &
+-- \\
+
+GetPower(UInt32 alignmentPMCh) &
+Obtiene la potencia óptica medida por el canal del medidor de potencia especificado. &
+Double &
+-- \\
+
+GetMeasurementWaveLength(UInt32 alignmentPMCh) &
+Obtiene la longitud de onda configurada para el canal del medidor de potencia especificado. &
+Double &
+-- \\
+
+SetSingle(ISingleParameter parameter) &
+Configura los parámetros del procedimiento de alineación \emph{Single}. &
+ErrorCode &
+-- \\
+
+SetSingle(ISingleParameter parameter, RotationCenter rotationCenter) &
+Configura los parámetros del procedimiento \emph{Single} utilizando un centro de rotación definido. &
+ErrorCode &
+-- \\
+
+SetFlat(IFlatParameter parameter) &
+Configura los parámetros del procedimiento de alineación \emph{Flat}. &
+ErrorCode &
+-- \\
+
+SetFlat(IFlatParameter parameter, RotationCenter rotationCenter) &
+Configura los parámetros del procedimiento \emph{Flat} utilizando un centro de rotación definido. &
+ErrorCode &
+-- \\
+
+SetFocus(IFocusParameter parameter) &
+Configura los parámetros del procedimiento de alineación \emph{Focus}. &
+ErrorCode &
+-- \\
+
+SetFocus(IFocusParameter parameter, RotationCenter rotationCenter) &
+Configura los parámetros del procedimiento \emph{Focus} utilizando un centro de rotación definido. &
+ErrorCode &
+-- \\
+
+SetTwoChRotation(ITwoChRotationParameter parameter) &
+Configura los parámetros del procedimiento de alineación por rotación de dos canales. &
+ErrorCode &
+-- \\
+
+SetTwoChRotation(ITwoChRotationParameter parameter, RotationCenter rotationCenter) &
+Configura los parámetros del procedimiento de rotación de dos canales utilizando un centro de rotación definido. &
+ErrorCode &
+-- \\
+
+SetMMFRotation(IMMFRotationParameter parameter) &
+Configura los parámetros del procedimiento de alineación por rotación para fibra multimodo. &
+ErrorCode &
+-- \\
+
+SetMMFRotation(IMMFRotationParameter parameter, RotationCenter rotationCenter) &
+Configura los parámetros del procedimiento de rotación para fibra multimodo utilizando un centro de rotación definido. &
+ErrorCode &
+-- \\
+
+SetLoopBack(ILoopBackParameter parameter) &
+Configura los parámetros del procedimiento de alineación \emph{LoopBack}. &
+ErrorCode &
+-- \\
+
+SetLoopBack(ILoopBackParameter parameter, RotationCenter rotationCenter) &
+Configura los parámetros del procedimiento \emph{LoopBack} utilizando un centro de rotación definido. &
+ErrorCode &
+-- \\
+
+SetCommon(CommonParameter parameter) &
+Configura los parámetros comunes del procedimiento de alineación. &
+ErrorCode &
+-- \\
+
+SetCommon(CommonParameter parameter, RotationCenter rotationCenter) &
+Configura los parámetros comunes utilizando un centro de rotación definido. &
+ErrorCode &
+-- \\
+
+SetMeasurementWaveLength(UInt32 alignmentPMCh, Double waveLength) &
+Configura la longitud de onda de medición para el canal del medidor de potencia especificado. &
+ErrorCode &
+-- \\
+
+%===========================================================
+% Tipos anidados
+%===========================================================
+\SetRow{bg=gray9}
+\SetCell[c=4]{c}
+Tipos anidados \\
+
+AlignmentType &
+Enumeración que define los distintos tipos de procedimientos de alineación soportados. &
+Enum &
+-- \\
+
+ErrorCode &
+Enumeración que define los posibles códigos de error del proceso de alineación. &
+Enum &
+-- \\
+
+Status &
+Enumeración que representa los estados posibles del procedimiento de alineación. &
+Enum &
+-- \\
+
+AligningStatusCode &
+Enumeración que describe el estado interno del algoritmo de alineación. &
+Enum &
+-- \\
+
+ProfileDataType &
+Enumeración que identifica los diferentes tipos de perfiles generados durante la alineación. &
+Enum &
+-- \\
+
+ZMode &
+Enumeración que define el modo de búsqueda utilizado sobre el eje Z. &
+Enum &
+-- \\
+
+ISharingParameter &
+Interfaz que define los parámetros compartidos entre distintos procedimientos de alineación. &
+Interface &
+-- \\
+
+ISingleParameter &
+Interfaz que define los parámetros del procedimiento \emph{Single}. &
+Interface &
+-- \\
+
+SingleParameter &
+Clase que implementa los parámetros del procedimiento \emph{Single}. &
+Class &
+-- \\
+
+IFlatParameter &
+Interfaz que define los parámetros del procedimiento \emph{Flat}. &
+Interface &
+-- \\
+
+FlatParameter &
+Clase que implementa los parámetros del procedimiento \emph{Flat}. &
+Class &
+-- \\
+
+IFocusParameter &
+Interfaz que define los parámetros del procedimiento \emph{Focus}. &
+Interface &
+-- \\
+
+FocusParameter &
+Clase que implementa los parámetros del procedimiento \emph{Focus}. &
+Class &
+-- \\
+
+ITwoChRotationParameter &
+Interfaz que define los parámetros del procedimiento de rotación de dos canales. &
+Interface &
+-- \\
+
+TwoChRotationParameter &
+Clase que implementa los parámetros del procedimiento de rotación de dos canales. &
+Class &
+-- \\
+
+IMMFRotationParameter &
+Interfaz que define los parámetros del procedimiento de rotación para fibra multimodo. &
+Interface &
+-- \\
+
+MMFRotationParameter &
+Clase que implementa los parámetros del procedimiento de rotación para fibra multimodo. &
+Class &
+-- \\
+
+ILoopBackParameter &
+Interfaz que define los parámetros del procedimiento \emph{LoopBack}. &
+Interface &
+-- \\
+
+LoopBackParameter &
+Clase que implementa los parámetros del procedimiento \emph{LoopBack}. &
+Class &
+-- \\
+
+ICommonParameter &
+Interfaz que define los parámetros comunes de los procedimientos de alineación. &
+Interface &
+-- \\
+
+CommonParameter &
+Clase que implementa los parámetros comunes de alineación. &
+Class &
+-- \\
+
+ProfileData &
+Clase que almacena los datos de perfil obtenidos durante un procedimiento de alineación. &
+Class &
+-- \\
+
+\end{longtblr}
+
+\normalsize
+
+%================================================================
+%================================================================
+%================================================================
+
+
+%===========================================================
+%===========================================================
+%                     Clase Profile
+%===========================================================
+%===========================================================
+
+\section{Clase Profile}
+
+%================================================================
+%================================================================
+%================================================================
+
+\footnotesize
+
+\begin{longtblr}[
+    caption={Miembros de la clase \texttt{Profile}},
+    label={tab:profile_members},
+]{
+    width=\textwidth,
+    colspec={
+        |Q[l,wd=0.28\textwidth]|
+        X|
+        Q[c,wd=0.12\textwidth]|
+        Q[c,wd=0.10\textwidth]|
+    },
+    hlines,
+}
+
+\SetRow{bg=gray!50}
+\textbf{Miembro} &
+\textbf{Descripción} &
+\textbf{Tipo .NET} &
+\textbf{Acceso} \\
+
+%===========================================================
+% Constructores
+%===========================================================
+\SetRow{bg=gray9}
+\SetCell[c=4]{c}
+Constructores \\
+
+Profile() &
+Inicializa una nueva instancia de la clase \texttt{Profile}. &
+Constructor &
+-- \\
+
+%===========================================================
+% Métodos
+%===========================================================
+\SetRow{bg=gray9}
+\SetCell[c=4]{c}
+Métodos \\
+
+Start() &
+Inicia el proceso de adquisición de datos de perfil. &
+ErrorCode &
+-- \\
+
+Stop() &
+Detiene el proceso de adquisición de datos de perfil. &
+ErrorCode &
+-- \\
+
+GetProfileStatus() &
+Obtiene el estado actual del proceso de adquisición del perfil. &
+Status &
+-- \\
+
+GetProfilePacketSumIndex() &
+Obtiene el número total de paquetes de datos disponibles para el perfil adquirido. &
+UInt32 &
+-- \\
+
+RequestProfileData(UInt32 index) &
+Solicita un paquete de datos de perfil correspondiente al índice especificado. &
+ProfileData &
+-- \\
+
+RequestProfileData(UInt32 index, Boolean isRotationCenterShift) &
+Solicita un paquete de datos de perfil considerando el desplazamiento del centro de rotación. &
+ProfileData &
+-- \\
+
+SetProfile(ProfileParameter parameter) &
+Configura los parámetros utilizados para la adquisición del perfil. &
+ErrorCode &
+-- \\
+
+SetProfile(ProfileParameter parameter, RotationCenter rotationCenter) &
+Configura los parámetros de adquisición del perfil utilizando un centro de rotación definido. &
+ErrorCode &
+-- \\
+
+%===========================================================
+% Tipos anidados
+%===========================================================
+\SetRow{bg=gray9}
+\SetCell[c=4]{c}
+Tipos anidados \\
+
+ErrorCode &
+Enumeración que define los posibles códigos de error del proceso de adquisición del perfil. &
+Enum &
+-- \\
+
+Status &
+Enumeración que representa los estados posibles del proceso de adquisición del perfil. &
+Enum &
+-- \\
+
+ProfileParameter &
+Clase que define los parámetros utilizados para configurar la adquisición de un perfil. &
+Class &
+-- \\
+
+ProfileData &
+Clase que almacena los datos obtenidos durante la adquisición de un perfil. &
+Class &
+-- \\
+
+\end{longtblr}
+
+\normalsize
+
+%================================================================
+%================================================================
+%================================================================
+
+
+%===========================================================
+%===========================================================
+%                 Clase Angle Adjustment
+%===========================================================
+%===========================================================
+
+\section{Clase Angle Asjustment}
+
+%================================================================
+%================================================================
+%================================================================
+
+\footnotesize
+
+\begin{longtblr}[
+    caption={Miembros de la clase \texttt{AngleAdjustment}},
+    label={tab:angleadjustment_members},
+]{
+    width=\textwidth,
+    colspec={
+        |Q[l,wd=0.28\textwidth]|
+        X|
+        Q[c,wd=0.12\textwidth]|
+        Q[c,wd=0.10\textwidth]|
+    },
+    hlines,
+}
+
+\SetRow{bg=gray!50}
+\textbf{Miembro} &
+\textbf{Descripción} &
+\textbf{Tipo .NET} &
+\textbf{Acceso} \\
+
+%===========================================================
+% Constructores
+%===========================================================
+\SetRow{bg=gray9}
+\SetCell[c=4]{c}
+Constructores \\
+
+AngleAdjustment(UInt16 id) &
+Inicializa una nueva instancia de la clase asociada al identificador del módulo de ajuste angular especificado. &
+Constructor &
+-- \\
+
+%===========================================================
+% Métodos
+%===========================================================
+\SetRow{bg=gray9}
+\SetCell[c=4]{c}
+Métodos \\
+
+Start() &
+Inicia el procedimiento de ajuste angular. &
+ErrorCode &
+-- \\
+
+Stop() &
+Detiene el procedimiento de ajuste angular. &
+ErrorCode &
+-- \\
+
+GetStatus() &
+Obtiene el estado actual del procedimiento de ajuste angular. &
+Status &
+-- \\
+
+GetErrorAxisID() &
+Obtiene el identificador del eje responsable del error actual. &
+UInt32 &
+-- \\
+
+GetAdjustingStatus() &
+Obtiene el estado detallado del procedimiento de ajuste angular. &
+AdjustingStatus &
+-- \\
+
+GetProfilePacketSumIndex(ProfileDataType profileDataType) &
+Obtiene el número total de paquetes de datos disponibles para el tipo de perfil especificado. &
+UInt32 &
+-- \\
+
+RequestProfileData(ProfileDataType profileDataType, UInt32 index) &
+Solicita un paquete de datos correspondiente al perfil y al índice especificados. &
+ProfileData &
+-- \\
+
+SetParameter(AngleAdjustmentParameter parameter) &
+Configura los parámetros utilizados durante el procedimiento de ajuste angular. &
+ErrorCode &
+-- \\
+
+SetParameter(AngleAdjustmentParameter parameter, RotationCenter rotationCenter) &
+Configura los parámetros del procedimiento utilizando un centro de rotación definido. &
+ErrorCode &
+-- \\
+
+%===========================================================
+% Tipos anidados
+%===========================================================
+\SetRow{bg=gray9}
+\SetCell[c=4]{c}
+Tipos anidados \\
+
+ErrorCode &
+Enumeración que define los posibles códigos de error del procedimiento de ajuste angular. &
+Enum &
+-- \\
+
+Status &
+Enumeración que representa los estados posibles del procedimiento de ajuste angular. &
+Enum &
+-- \\
+
+AdjustingStatus &
+Enumeración que describe el estado interno del algoritmo de ajuste angular. &
+Enum &
+-- \\
+
+ProfileDataType &
+Enumeración que identifica los diferentes tipos de perfiles generados durante el procedimiento de ajuste angular. &
+Enum &
+-- \\
+
+AngleAdjustmentParameter &
+Clase que define los parámetros utilizados para configurar el procedimiento de ajuste angular. &
+Class &
+-- \\
+
+ProfileData &
+Clase que almacena los datos de perfil obtenidos durante el procedimiento de ajuste angular. &
+Class &
+-- \\
+
+\end{longtblr}
+
+\normalsize
+
+%================================================================
+%================================================================
+%================================================================
+
+% %===========================================================
+% %===========================================================
+% %                     Clase Profile
+% %===========================================================
+% %===========================================================
+
+% \section{Clase Profile}
+
+
+
+% %===========================================================
+% %===========================================================
+% %                     Clase Profile
+% %===========================================================
+% %===========================================================
+
+% \section{Clase Profile}
+
+
+
+
+
+
+
+\end{document}
+
+
