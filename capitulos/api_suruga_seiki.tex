@@ -2,6 +2,55 @@
 
 \begin{document}
 
+\chapter{Automap}
+
+Automaper is a python script that converts a simple Excel description of a photonic chip into a complete measurement plan ready for chip characterization.
+
+Instead of hardcoding device coordinates or manually programming measurement routines, the user only needs to describe the chip structure in an Excel file then automaper.py interprets this information and automatically generates the data structures required by the positioning software.
+
+The Excel file is organized in independent sheets, where each sheet describes a different aspect of the chip as follows:
+
+\textbf{Metadata}
+
+Contains general information about the chip, answers the question: What is the context of this measurement?.
+
+Typical information includes
+
+\begin{itemize}
+    \item Project
+    \item Wafer
+    \item Die
+    \item Operator
+    \item Date
+    \item Comments
+\end{itemize}
+
+This information is descriptive only and is not involved in the positioning process.
+
+\textbf{Devices}
+
+This worksheet answers the question: What devices are available on the chip for measurement?
+
+Each row defines a single device together with the information required to identify it throughout the measurement plan.
+
+The columns have the following purposes:
+
+\begin{itemize}
+    \item \textbf{Device:} A unique identifier for each device. This identifier is used throughout the workbook to associate the corresponding ports and measurement paths with the correct device.
+    \item \textbf{Type:} Specifies the type of photonic device (e.g., waveguide, MMI, ring resonator, splitter). Although this information is not required for positioning, it is useful for filtering devices, generating reports, and applying device-specific measurement or analysis routines.
+    \item \textbf{Description:} An optional user-defined description. This field does not affect Automaper's operation or the alignment process; it is provided solely for documentation and traceability purposes.
+    \item \textbf{Measure:}  Enables or disables a device for the current measurement routine. When unchecked, the device is excluded from the measurement routine without requiring any modification to the measurement paths.
+\end{itemize}
+
+\textbf{Ports}
+
+Where is every optical port located?
+
+\textbf{Measurement plan}
+
+Which optical paths should be measured?
+
+
 \chapter{Instalación TwinCAT XAE eXtended Automation Engineering}
 
 \begin{figure}[H]

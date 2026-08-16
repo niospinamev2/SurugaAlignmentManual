@@ -2,9 +2,9 @@
 
 \begin{document}
 
-\chapter{Operación básica}
+\chapter{Basic operation}
 
-\section{Pantallas y configuraciones}
+\section{Screens and settings}
 
 %===========================================================
 %===========================================================
@@ -15,9 +15,25 @@
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{GUISuruga/01_main_screen.png}
-    \caption{Pendiente.}
-    %\label{fig:frontDA1000}
+    \caption{Main screen of the Suruga positioning system. The interface is divided into four main sections: (a) Axis Status, which displays the current position and status of each axis; (b) Optical Power, which displays the optical power measured by the connected power meter; (c) Analog Input, which displays the voltage measured at each available analog input channel; and (d) Function Access, which provides direct access to the main functionalities and configuration options of the Suruga platform.}
+    \label{fig:suruga_main_screen}
 \end{figure}
+
+This screen is divided into three main sections. The first section, Axis Status, allows the user to monitor the current position of each axis, the CW and CCW limit switch status, the origin sensor status, the alarm outputs, and the availability of each servo. The second section, Optical Power, displays the current reading of the power meter, if one is available. Finally, the Analog Input section allows the user to monitor the values of the different analog inputs. On the left side of the screen, direct access to the different functionalities of the Suruga platform is provided.
+
+\begin{itemize}
+    \item \textbf{Current Position:} Displays the current coordinates of each axis. Linear axes are displayed in micrometers ($\mu$m), while rotational axes are displayed in degrees ($^\circ$). Axes with the number 1 correspond to the left arm of the Suruga positioning system, while axes with the number 2 correspond to the right arm.
+
+    \item \textbf{CW:} Displays the status of the clockwise (CW) limit sensor. Red indicates that the limit has been reached, while gray indicates that the axis is within the safe operating range.
+
+    \item \textbf{CCW:} Displays the status of the counterclockwise (CCW) limit sensor. Red indicates that the limit has been reached, while gray indicates that the axis is within the safe operating range.
+
+    \item \textbf{ORG:} Displays the status of the origin sensor. For this particular stage, no origin sensor is available, so the indicator will remain continuously displayed in red or gray.
+
+    \item \textbf{ALM:} Indicates the alarm status of the axis. Red is displayed when an alarm occurs, such as an overload or a similar fault condition. Gray indicates normal operation.
+
+    \item \textbf{RDY:} Displays the operation status of each axis. Green indicates that the servo is enabled and ready for operation, while gray indicates that the servo is turned off.
+\end{itemize}
 
 %===========================================================
 %===========================================================
@@ -40,6 +56,20 @@
     %\label{fig:frontDA1000}
 \end{figure}
 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{GUISuruga/JogTy.png}
+    \caption{Pendiente.}
+    %\label{fig:frontDA1000}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{GUISuruga/JogTz.png}
+    \caption{Pendiente.}
+    %\label{fig:frontDA1000}
+\end{figure}
 
 
 
