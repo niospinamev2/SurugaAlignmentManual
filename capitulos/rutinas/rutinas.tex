@@ -1,0 +1,248 @@
+\documentclass[../../main.tex]{subfiles}
+
+\begin{document}
+
+\chapter{Routines}
+
+% =====================================================
+% =====================================================
+% Rutina Raster Scan
+% =====================================================
+% =====================================================
+
+\section{RasterScan} 
+
+The routine performs a two-dimensional raster scan by moving along a selected axis while acquiring a profile along the perpendicular axis at each scan position. For example, when the X axis is selected as the scan axis, the system moves along X according to the specified scan step and acquires a Z-profile at each X position. This approach is particularly useful for vertical coupling measurements, where the optical power distribution can be characterized as a function of the X and Z positions. 
+
+During the scan, the profiles acquired using the Suruga Seiki utilities can be saved for further analysis. The acquired data are then cleaned by removing invalid or irrelevant samples that could interfere with the generation of the heatmap. The processed profiles are interpolated onto a common grid and used to generate an interactive heatmap representing the measured power distribution. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{Routines/RasterScan/HowItWorks.png}
+    \caption{Two-dimensional raster scan for optical coupling localization. Profiles are acquired along the profile axis while the stage is incrementally moved along the perpendicular scan axis. The acquired profiles are combined to reconstruct a two-dimensional heatmap, allowing the position of maximum optical coupling to be identified.}
+    \label{fig:raster_scan}
+\end{figure}
+
+Once the scan is complete, the routine identifies the global maximum power measured within the scanned area and, if enabled, automatically moves the arm to the corresponding X and Z position.
+
+\begin{figure}[H]
+
+    \centering
+
+    \includegraphics[width=1\textwidth]{Routines/RasterScan/BasicFlowchart.png}
+
+    \caption{Flowchart of the \textit{RasterScan} routine. The process begins with the configuration of the raster scan and profile parameters, followed by the initialization of the Suruga Seiki platform. For each position along the scan axis, the profile and scan-axis positions are obtained, and the acquired data are retrieved, stored, and processed using \texttt{clean\_profile\_data()} and \texttt{save\_profile\_txt()}. The process is repeated until all positions along the scan axis have been completed. Finally, the processed profiles are passed to \texttt{create\_heatmap()} to reconstruct the two-dimensional power map and locate the maximum signal, after which the system can move to the corresponding target positions.}
+
+    \label{fig:raster_scan_flowchart}
+
+\end{figure}
+
+
+% -----------------------------------------------------
+% Descripcion funciones
+% -----------------------------------------------------
+
+% -----------------------------------------------------
+\subsection{\texttt{clean\_profile\_data()}}
+% -----------------------------------------------------
+
+\textbf{Objective:}
+
+Clean and prepare the data acquired by the profile function for further
+processing.
+
+This function receives the complete dictionary returned by
+\texttt{profile.get\_profile\_data()} and extracts only the variables required
+for the raster scan:
+
+\begin{itemize}
+    \item \texttt{main\_position}: the position of the axis being profiled.
+    \item \texttt{signal1}: the measured optical signal.
+\end{itemize}
+
+The function then performs the following operations:
+
+\begin{enumerate}
+    \item Converts the extracted data into NumPy arrays.
+    
+    \item Removes invalid samples, including:
+    \begin{itemize}
+        \item Non-finite position values.
+        \item Non-finite signal values.
+        \item Samples where the position is equal to zero.
+    \end{itemize}
+    
+    \item Sorts and reorganizes the remaining samples according to their
+    position.
+\end{enumerate}
+
+The function \textbf{does not modify or save the original profile data}.
+Its purpose is to generate a cleaner and more manageable representation of
+the acquired data, which can then be used for further processing,
+particularly for generating the heatmap with
+\texttt{create\_heatmap()}.
+
+
+% -----------------------------------------------------
+\subsection{\texttt{save\_profile\_txt()}}
+% -----------------------------------------------------
+
+\textbf{Objective:}
+
+Preserve the complete profile data acquired during the measurement, together
+with the experimental parameters required to document and reproduce the
+measurement.
+
+This function receives the complete dictionary returned by
+\texttt{profile.get\_profile\_data()}, including the following variables:
+
+\begin{itemize}
+    \item \texttt{main\_position}: position of the main axis during the
+    profile.
+    \item \texttt{sub1\_position}: position of the first secondary axis.
+    \item \texttt{sub2\_position}: position of the second secondary axis.
+    \item \texttt{signal1}: first measured signal.
+    \item \texttt{signal2}: second measured signal.
+\end{itemize}
+
+In addition to the acquired data, the function constructs a header containing
+the experimental parameters and the stage positions at the time of
+acquisition:
+
+\begin{itemize}
+    \item \textbf{Date:} Date and time of the measurement.
+    \item \textbf{Center X:} X-axis center position.
+    \item \textbf{Center Z:} Z-axis center position.
+    \item \textbf{Arm:} Selected measurement arm or configuration.
+    \item \textbf{Scan axis:} Axis along which the raster scan is performed.
+    \item \textbf{Scan width:} Total width of the scan.
+    \item \textbf{Scan step:} Distance between consecutive scan positions.
+    \item \textbf{Profile axis:} Axis along which the profile is acquired.
+    \item \textbf{Profile range:} Total range covered by the profile.
+    \item \textbf{Profile speed:} Speed used during profile acquisition.
+\end{itemize}
+
+The function then stores the complete dataset and the associated metadata in
+a \textbf{tab-separated TXT file} using NumPy's
+\texttt{np.savetxt()} function.
+
+Unlike \texttt{clean\_profile\_data()}, this function does \textbf{not}
+remove, filter, or reorganize the acquired samples. Its purpose is to
+preserve the original measurement data as completely as possible, while
+providing the experimental metadata necessary to identify and reproduce the
+measurement.
+
+The resulting TXT file therefore contains both the
+\textbf{raw profile data} and the \textbf{measurement parameters} associated
+with its acquisition.
+
+
+% -----------------------------------------------------
+\subsection{\texttt{create\_heatmap()}}
+% -----------------------------------------------------
+
+\textbf{Objective:}
+
+Reconstruct a two-dimensional signal map from all the profiles acquired
+during the raster scan, generate an interactive heatmap, and determine the
+global maximum of \texttt{signal1} together with its corresponding X and Z
+coordinates.
+
+The function receives two inputs:
+
+\begin{itemize}
+    \item \texttt{scan\_data}: a dictionary containing the processed profiles
+    acquired during the raster scan. Each entry has the following structure:
+\end{itemize}
+
+\begin{verbatim}
+[
+    {
+        "x": ...,
+        "z_positions": ...,
+        "signal": ...
+    },
+    ...
+]
+\end{verbatim}
+
+\begin{itemize}
+    \item \texttt{output\_path}: the path where the generated heatmap will be
+    saved.
+\end{itemize}
+
+\subsubsection{Data Reconstruction}
+
+First, the function takes the Z positions from the first acquired profile
+and uses them as the common reference axis:
+
+\begin{verbatim}
+z_common = scan_data[0]["z_positions"]
+\end{verbatim}
+
+Since the Z positions may not be identical for every profile, each profile is
+interpolated onto this common Z-axis. This ensures that all profiles have the
+same number of samples and can be represented consistently in a two-dimensional
+matrix.
+
+For each profile, the function:
+
+\begin{enumerate}
+    \item Retrieves the corresponding X position.
+    \item Retrieves the Z positions and measured signal.
+    \item Interpolates the signal onto \texttt{z\_common}.
+    \item Adds the interpolated signal to the 2D signal matrix.
+\end{enumerate}
+
+The resulting matrix represents the measured signal as a function of the X
+and Z coordinates and is used to generate the heatmap.
+
+
+\subsubsection{Heatmap Generation}
+
+The reconstructed 2D signal matrix is used to generate an
+\textbf{interactive Plotly heatmap}, where:
+
+\begin{itemize}
+    \item The \textbf{X-axis} represents the raster scan position.
+    \item The \textbf{Z-axis} represents the profile position.
+    \item The \textbf{color scale} represents the measured
+    \texttt{signal1}.
+\end{itemize}
+
+The resulting heatmap provides a two-dimensional visualization of the
+measured optical signal across the scanned area and is saved to the location
+specified by \texttt{output\_path}.
+
+
+\subsubsection{Global Maximum Detection}
+
+In addition to generating the heatmap, the function determines the position
+of the maximum measured signal.
+
+For each profile, the function first identifies its \textbf{local maximum}.
+The local maximum is then compared with the maximum found in the previous
+profiles. By continuously retaining the highest value, the function
+ultimately determines the \textbf{global maximum} across the entire raster
+scan.
+
+The global maximum is stored together with its corresponding coordinates:
+
+\begin{itemize}
+    \item \textbf{Maximum signal:} maximum value of \texttt{signal1}.
+    \item \textbf{X coordinate:} X position of the profile where the maximum
+    was found.
+    \item \textbf{Z coordinate:} Z position corresponding to the maximum
+    signal within that profile.
+\end{itemize}
+
+Therefore, \texttt{create\_heatmap()} performs two main tasks: it
+\textbf{reconstructs and visualizes the complete raster scan as a
+two-dimensional signal map}, and it \textbf{identifies the position of the
+maximum output power} within the scanned region.
+
+\input{capitulos/rutinas/automapper.tex}
+
+\end{document}
+
+
