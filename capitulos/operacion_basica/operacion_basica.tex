@@ -19,7 +19,7 @@
     \label{fig:suruga_main_screen}
 \end{figure}
 
-This screen is divided into three main sections. The first section, Axis Status, allows the user to monitor the current position of each axis, the CW and CCW limit switch status, the origin sensor status, the alarm outputs, and the availability of each servo. The second section, Optical Power, displays the current reading of the power meter, if one is available. Finally, the Analog Input section allows the user to monitor the values of the different analog inputs. On the left side of the screen, direct access to the different functionalities of the Suruga platform is provided.
+This screen is divided into three main sections. The first section, Axis Status, allows the user to monitor the current position of each axis, the CW and CCW limit switch status, the origin sensor status, the alarm outputs, and the availability of each servo. As listed below:
 
 \begin{itemize}
     \item \textbf{Current Position:} Displays the current coordinates of each axis. Linear axes are displayed in micrometers ($\mu$m), while rotational axes are displayed in degrees ($^\circ$). Axes with the number 1 correspond to the left arm of the Suruga positioning system, while axes with the number 2 correspond to the right arm.
@@ -35,18 +35,58 @@ This screen is divided into three main sections. The first section, Axis Status,
     \item \textbf{RDY:} Displays the operation status of each axis. Green indicates that the servo is enabled and ready for operation, while gray indicates that the servo is turned off.
 \end{itemize}
 
+The second section, Optical Power, displays the current reading of the power meter, if one is available. Finally, the Analog Input section allows the user to monitor the values of the different analog inputs. On the left side of the screen, direct access to the different functionalities of the Suruga platform is provided.
+
 %===========================================================
 %===========================================================
 %===========================================================
 
 \subsection{Jog screen}
 
+By pressing the Jog button in the quick access section, indicated in part (d) of the main screen in Fig.~\ref{fig:suruga_main_screen}(d), the user is directed to the Jog screen shown in Fig.~\ref{fig:02_jog_screen}.
+
+This screen allows the user to perform movements along the different axes of the stage and to adjust the rotation angles of the corresponding axes. It is important to note that, once the Suruga Seiki stage is powered on, no power is supplied to the motors by default. Therefore, the Servo button on this screen must be pressed to enable each axis of the stage before any movement can be performed.
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{GUISuruga/02_jog_screen.png}
     \caption{Pendiente.}
-    %\label{fig:frontDA1000}
+    \label{fig:02_jog_screen}
 \end{figure}
+
+The jog screen can be divided into three sections. Section (a) displays the optical power measured by the power meter, as well as the voltage measured through the analog inputs. Section (b) provides access to five control buttons and selectors:
+
+\begin{itemize}
+    \item \textbf{Servo:} Enables or disables the servos of the stage.
+
+    \item \textbf{Error Reset:} Resets the servo alarm in case an alarm
+    occurs.
+
+    \item \textbf{Mode:} Allows the user to select between the three
+    available movement modes: Jog, Inching, and
+    Target. In Jog mode, the movement continues while
+    the movement button is held down. In Inching mode, pressing
+    a movement button moves the selected axis by the distance specified
+    in the Inching Distance parameter. In Target mode,
+    the selected axis moves to the target position specified in Section
+    (c).
+
+    \item \textbf{Velocity} -- Allows the user to select between the three
+    preset speed configurations: High, Mid, and Low.
+
+    \item \textbf{Stop} -- Stops the movement of the selected axis.
+\end{itemize}
+
+
+Finally, Section (c) is divided into twelve subsections, six for each arm. Each subsection corresponds to one of the six degrees of freedom available for the respective arm: translational movements along the $X$, $Y$, and $Z$ axes, and angular movements around the $X$, $Y$, and $Z$ axes ($T_x$, $T_y$, and $T_z$, respectively). Each of the subsections in Section (c) provides a set of movement control buttons, as well as fields for defining the target position and the inching distance. The user can also define the movement velocity, while the current position of the corresponding axis is continuously displayed. In addition, each subsection includes status indicators for the CW, CCW, and ORG limit switches, as well as an ALM indicator.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{GUISuruga/02_1_move_buttons.png}
+    \caption{Movement controls and status indicators for an individual stage axis, including target position, inching distance, velocity, current position, limit-switch status, alarm status, and homing control.}
+    \label{fig:02_1_move_buttons}
+\end{figure}
+
 
 
 \begin{figure}[H]
