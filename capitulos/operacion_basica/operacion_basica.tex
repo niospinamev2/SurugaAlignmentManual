@@ -8,6 +8,8 @@
 
 %===========================================================
 %===========================================================
+%               Main Screen
+%===========================================================
 %===========================================================
 
 \subsection{Main screen}
@@ -39,6 +41,8 @@ The second section, Optical Power, displays the current reading of the power met
 
 %===========================================================
 %===========================================================
+%               Jog screen
+%===========================================================
 %===========================================================
 
 \subsection{Jog screen}
@@ -49,12 +53,12 @@ This screen allows the user to perform movements along the different axes of the
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{GUISuruga/02_jog_screen.png}
-    \caption{Pendiente.}
+    \includegraphics[width=1\textwidth]{GUISuruga/02_00_jog_screen.png}
+    \caption{Jog screen of the Suruga positioning system. The interface is divided into three main sections: (a) Measurement Monitoring, which displays the optical power and analog input measurements; (b) Movement Control, which provides the servo, error reset, movement mode, velocity, and stop controls; and (c) Axis Control, which provides independent movement and homing controls for each axis of both arms, together with the corresponding position, velocity, limit switch, and alarm status information.}
     \label{fig:02_jog_screen}
 \end{figure}
 
-The jog screen can be divided into three sections. Section (a) displays the optical power measured by the power meter, as well as the voltage measured through the analog inputs. Section (b) provides access to five control buttons and selectors:
+The jog screen can be divided into three sections. Section (a) Measurement Monitoring, displays the optical power measured by the power meter, as well as the voltage measured through the analog inputs. Section (b)  Movement Control, provides access to five control buttons and selectors:
 
 \begin{itemize}
     \item \textbf{Servo:} Enables or disables the servos of the stage.
@@ -78,21 +82,52 @@ The jog screen can be divided into three sections. Section (a) displays the opti
 \end{itemize}
 
 
-Finally, Section (c) is divided into twelve subsections, six for each arm. Each subsection corresponds to one of the six degrees of freedom available for the respective arm: translational movements along the $X$, $Y$, and $Z$ axes, and angular movements around the $X$, $Y$, and $Z$ axes ($T_x$, $T_y$, and $T_z$, respectively). Each of the subsections in Section (c) provides a set of movement control buttons, as well as fields for defining the target position and the inching distance. The user can also define the movement velocity, while the current position of the corresponding axis is continuously displayed. In addition, each subsection includes status indicators for the CW, CCW, and ORG limit switches, as well as an ALM indicator.
+Finally, Section (c) Axis Control, is divided into twelve subsections, six for each arm. Each subsection corresponds to one of the six degrees of freedom available for the respective arm: translational movements along the $X$, $Y$, and $Z$ axes, and angular movements around the $X$, $Y$, and $Z$ axes ($T_x$, $T_y$, and $T_z$, respectively). Each of the subsections in Section (c) provides a set of movement control buttons, as well as fields for defining the target position and the inching distance. The user can also define the movement velocity, while the current position of the corresponding axis is continuously displayed. In addition, each subsection includes status indicators for the CW, CCW, and ORG limit switches, as well as an ALM indicator.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{GUISuruga/02_1_move_buttons.png}
+    \includegraphics[width=1\textwidth]{GUISuruga/02_01_move_buttons.png}
     \caption{Movement controls and status indicators for an individual stage axis, including target position, inching distance, velocity, current position, limit-switch status, alarm status, and homing control.}
-    \label{fig:02_1_move_buttons}
+    \label{fig:02_01_move_buttons}
 \end{figure}
 
+The following figures illustrate the movement directions available for the
+three translational degrees of freedom of the stage. The translational
+movements along the $X$, $Y$, and $Z$ axes are presented, showing the
+directions associated with the \texttt{+} and \texttt{-} buttons for each
+arm.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{GUISuruga/02_02_JogX.png}
+    \caption{Movement directions along the $X$ axis for arm 1 (a) and arm 2 (b) associated with the \texttt{+} and \texttt{-} buttons.}
+    \label{fig:02_02_JogX}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{GUISuruga/02_03_JogY.png}
+    \caption{Movement directions along the $Y$ axis for arm 1 (a) and arm 2 (b) associated with the \texttt{+} and \texttt{-} buttons.}
+    \label{fig:02_03_JogY}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{GUISuruga/02_04_JogZ.png}
+    \caption{Movement directions along the $Z$ axis for arm 1 (a) and arm 2 (b) associated with the \texttt{+} and \texttt{-} buttons.}
+    \label{fig:02_04_JogZ}
+\end{figure}
+
+The corresponding angular movements are presented next. These figures
+illustrate the rotation directions associated with the \texttt{+} and
+\texttt{-} buttons for rotations around the $X$, $Y$, and $Z$ axes
+($T_x$, $T_y$, and $T_z$, respectively), for both arms of the stage.
 
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{GUISuruga/JogTx.png}
-    \caption{Pendiente.}
+    \caption{Rotation directions around the $X$ axis produced by the \texttt{+} and \texttt{-} buttons for arm 1 (a) and arm 2 (b).}
     %\label{fig:frontDA1000}
 \end{figure}
 
@@ -101,13 +136,13 @@ Finally, Section (c) is divided into twelve subsections, six for each arm. Each 
     \centering
     \includegraphics[width=1\textwidth]{GUISuruga/JogTy.png}
     \caption{Pendiente.}
-    %\label{fig:frontDA1000}
+    \caption{Rotation directions around the $Y$ axis produced by the \texttt{+} and \texttt{-} buttons for arm 1 (a) and arm 2 (b).}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{GUISuruga/JogTz.png}
-    \caption{Pendiente.}
+    \caption{Rotation directions around the $Z$ axis produced by the \texttt{+} and \texttt{-} buttons for arm 1 (a) and arm 2 (b).}
     %\label{fig:frontDA1000}
 \end{figure}
 
@@ -115,9 +150,17 @@ Finally, Section (c) is divided into twelve subsections, six for each arm. Each 
 
 %===========================================================
 %===========================================================
+%               Profile screen
+%===========================================================
 %===========================================================
 
 \subsection{Profile screen}
+
+The SurugaSeiki.Motion.Profile class provides a high-level interface for configuring, executing, and monitoring profiling operations on the Suruga Seiki platform. To use this functionality, an instance of the Profile class is created, providing access to a set of methods for configuring the acquisition parameters, starting and stopping the profiling process, monitoring its status, and requesting the acquired data.
+
+The class also contains several nested types that complement its functionality. ProfileParameter is used to define the parameters required to configure a profiling operation, while ProfileData represents the data acquired during the operation. In addition, the Status and ErrorCode enumerations are used to identify, respectively, the current status of the profiling process and the error conditions that may occur during its execution.
+
+For a detailed description of the functionalities, methods, and data structures of the Profile class, refer to the class definition provided in Appendix~\ref{sec:profile_class}. However in this section we will talk about the Profile screen.
 
 \begin{figure}[H]
     \centering
@@ -125,6 +168,8 @@ Finally, Section (c) is divided into twelve subsections, six for each arm. Each 
     \caption{Pendiente.}
     %\label{fig:frontDA1000}
 \end{figure}
+
+
 
 %===========================================================
 %===========================================================

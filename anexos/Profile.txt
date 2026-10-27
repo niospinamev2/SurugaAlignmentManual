@@ -3,10 +3,10 @@
 SurugaSeiki.Motion.Profile
 ====================================================================================================
 
-Constructores:
+Constructor:
   Profile()
 
-Metodos:
+Methods:
   ErrorCode Start()
   ErrorCode Stop()
   Status GetProfileStatus()
@@ -16,7 +16,7 @@ Metodos:
   ErrorCode SetProfile(ProfileParameter parameter)
   ErrorCode SetProfile(ProfileParameter parameter, RotationCenter rotationCenter)
 
-Tipos anidados/enums:
+Nested Types:
   SurugaSeiki.Motion.Profile+ErrorCode
   SurugaSeiki.Motion.Profile+Status
   SurugaSeiki.Motion.Profile+ProfileParameter
@@ -26,7 +26,7 @@ Tipos anidados/enums:
 SurugaSeiki.Motion.Profile+ErrorCode
 ====================================================================================================
 
-Campos:
+Fields:
   Int32 value__
   static ErrorCode None
   static ErrorCode Axis
@@ -37,7 +37,7 @@ Campos:
 SurugaSeiki.Motion.Profile+ProfileData
 ====================================================================================================
 
-Campos:
+Fields:
   UInt16 mainAxisNumber
   UInt16 sub1AxisNumber
   UInt16 sub2AxisNumber
@@ -55,7 +55,7 @@ Campos:
 SurugaSeiki.Motion.Profile+ProfileParameter
 ====================================================================================================
 
-Campos:
+Fields:
   UInt16 mainAxisNumber
   UInt16 sub1AxisNumber
   UInt16 sub2AxisNumber
@@ -73,7 +73,7 @@ Campos:
 SurugaSeiki.Motion.Profile+Status
 ====================================================================================================
 
-Campos:
+Fields:
   Int32 value__
   static Status Stopping
   static Status Success

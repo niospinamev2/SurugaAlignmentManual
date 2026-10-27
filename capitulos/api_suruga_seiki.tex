@@ -2,222 +2,277 @@
 
 \begin{document}
 
-\chapter{Automap}
+% \chapter{Automap}
 
-Automaper is a python script that converts a simple Excel description of a photonic chip into a complete measurement plan ready for chip characterization.
+% Automaper is a python script that converts a simple Excel description of a photonic chip into a complete measurement plan ready for chip characterization.
 
-Instead of hardcoding device coordinates or manually programming measurement routines, the user only needs to describe the chip structure in an Excel file then automaper.py interprets this information and automatically generates the data structures required by the positioning software.
+% Instead of hardcoding device coordinates or manually programming measurement routines, the user only needs to describe the chip structure in an Excel file then automaper.py interprets this information and automatically generates the data structures required by the positioning software.
 
-The Excel file is organized in independent sheets, where each sheet describes a different aspect of the chip as follows:
+% The Excel file is organized in independent sheets, where each sheet describes a different aspect of the chip as follows:
 
-\textbf{Metadata}
+% \textbf{Metadata}
 
-Contains general information about the chip, answers the question: What is the context of this measurement?.
+% Contains general information about the chip, answers the question: What is the context of this measurement?.
 
-Typical information includes
+% Typical information includes
 
-\begin{itemize}
-    \item Project
-    \item Wafer
-    \item Die
-    \item Operator
-    \item Date
-    \item Comments
-\end{itemize}
+% \begin{itemize}
+%     \item Project
+%     \item Wafer
+%     \item Die
+%     \item Operator
+%     \item Date
+%     \item Comments
+% \end{itemize}
 
-This information is descriptive only and is not involved in the positioning process.
+% This information is descriptive only and is not involved in the positioning process.
 
-\textbf{Devices}
+% \textbf{Devices}
 
-This worksheet answers the question: What devices are available on the chip for measurement?
+% This worksheet answers the question: What devices are available on the chip for measurement?
 
-Each row defines a single device together with the information required to identify it throughout the measurement plan.
+% Each row defines a single device together with the information required to identify it throughout the measurement plan.
 
-The columns have the following purposes:
+% The columns have the following purposes:
 
-\begin{itemize}
-    \item \textbf{Device:} A unique identifier for each device. This identifier is used throughout the workbook to associate the corresponding ports and measurement paths with the correct device.
-    \item \textbf{Type:} Specifies the type of photonic device (e.g., waveguide, MMI, ring resonator, splitter). Although this information is not required for positioning, it is useful for filtering devices, generating reports, and applying device-specific measurement or analysis routines.
-    \item \textbf{Description:} An optional user-defined description. This field does not affect Automaper's operation or the alignment process; it is provided solely for documentation and traceability purposes.
-    \item \textbf{Measure:}  Enables or disables a device for the current measurement routine. When unchecked, the device is excluded from the measurement routine without requiring any modification to the measurement paths.
-\end{itemize}
+% \begin{itemize}
+%     \item \textbf{Device:} A unique identifier for each device. This identifier is used throughout the workbook to associate the corresponding ports and measurement paths with the correct device.
+%     \item \textbf{Type:} Specifies the type of photonic device (e.g., waveguide, MMI, ring resonator, splitter). Although this information is not required for positioning, it is useful for filtering devices, generating reports, and applying device-specific measurement or analysis routines.
+%     \item \textbf{Description:} An optional user-defined description. This field does not affect Automaper's operation or the alignment process; it is provided solely for documentation and traceability purposes.
+%     \item \textbf{Measure:}  Enables or disables a device for the current measurement routine. When unchecked, the device is excluded from the measurement routine without requiring any modification to the measurement paths.
+% \end{itemize}
 
-\textbf{Ports}
+% \textbf{Ports}
 
-Where is every optical port located?
+% Where is every optical port located?
 
-\textbf{Measurement plan}
+% \textbf{Measurement plan}
 
-Which optical paths should be measured?
+% Which optical paths should be measured?
 
 
-\chapter{Instalación TwinCAT XAE eXtended Automation Engineering}
+\chapter{TwinCAT XAE (eXtended Automation Engineering) Installation}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{TwinCat/TwinCat00.png}
-    \caption{Pendiente.}
-    %\label{fig:frontDA1000}
+    \caption{Beckhoff Download Finder showing the TwinCAT 3 eXtended Automation Engineering (XAE) package available for download.}
+    \label{fig:TwinCat00}
 \end{figure}
+
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{TwinCat/TwinCat01.png}
-    \caption{Pendiente.}
-    %\label{fig:frontDA1000}
+    \caption{TwinCAT 3 XAE start page after launching the development environment.}
+    \label{fig:TwinCat01}
 \end{figure}
+
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{TwinCat/TwinCat02.png}
-    \caption{Pendiente.}
-    %\label{fig:frontDA1000}
+    \caption{Selection of the \texttt{Open Project from Target} option from the TwinCAT 3 \texttt{File} menu.}
+    \label{fig:TwinCat02}
 \end{figure}
+
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{TwinCat/TwinCat03.png}
-    \caption{Pendiente.}
-    %\label{fig:frontDA1000}
+    \caption{Target System dialog for selecting the TwinCAT system to be accessed.}    
+    \label{fig:TwinCat03}
 \end{figure}
+
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{TwinCat/TwinCat04.png}
-    \caption{Pendiente.}
-    %\label{fig:frontDA1000}
+    \caption{Selection of the network adapter used to establish the connection with the TwinCAT target system.}
+    \label{fig:TwinCat04}
 \end{figure}
+
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{TwinCat/TwinCat05.png}
-    \caption{Pendiente.}
-    %\label{fig:frontDA1000}
+    \caption{Configuration of the TwinCAT remote route using the detected target system and its AMS Net ID and IP address.}
+    \label{fig:TwinCat05}
 \end{figure}
+
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{TwinCat/TwinCat06.png}
-    \caption{Pendiente.}
-    %\label{fig:frontDA1000}
+    \caption{Secure ADS configuration using the target system's self-signed certificate and fingerprint.}
+    \label{fig:TwinCat06}
 \end{figure}
+
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{TwinCat/TwinCat07.png}
-    \caption{Pendiente.}
-    %\label{fig:frontDA1000}
+    \caption{Configuration of the remote user credentials for the TwinCAT target system.}
+    \label{fig:TwinCat07}
 \end{figure}
+
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{TwinCat/TwinCat08.png}
-    \caption{Pendiente.}
-    %\label{fig:frontDA1000}
+    \caption{Configured remote route showing the target system, AMS Net ID, IP address, and route settings.}
+    \label{fig:TwinCat08}
 \end{figure}
+
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{TwinCat/TwinCat09.png}
-    \caption{Pendiente.}
-    %\label{fig:frontDA1000}
+    \caption{Selection of the configured TwinCAT target system for the project.}
+    \label{fig:TwinCat09}
 \end{figure}
 
-\chapter{Documentacion de la API Suruga Seiki}
+
+\chapter{Suruga Seiki API Documentation}
 \label{ap:api-suruga-seiki}
 
-Es necesario cargar el ensamblado (assembly), una unidad de código previamente compilada que permite establecer la comunicación con la plataforma Suruga Seiki. Este ensamblado está compuesto por un conjunto de clases que definen las propiedades (atributos) y los métodos (acciones o funcionalidades) disponibles en la plataforma.
+To interact with the Suruga Seiki platform from an external application, the corresponding .NET assembly must first be loaded. An assembly is a compiled unit of code that contains the classes, types, and functionality required by the application to interact with the Suruga Seiki system. The assembly exposes a set of classes that represent different components and functionalities of the platform.
 
-En programación orientada a objetos, los métodos representan las acciones que una clase puede ejecutar, mientras que las propiedades describen las características asociadas a sus objetos. Un objeto es una instancia concreta de una clase; utilizando una analogía, la clase puede entenderse como un plano de construcción y el objeto como el resultado material obtenido a partir de ese plano.
+From an object-oriented programming perspective, a class defines the structure and behavior of a particular type of object. Its methods represent the operations or actions that can be performed, while its properties describe characteristics or values associated with its objects. An object is a concrete instance of a class. As an analogy, a class can be understood as a construction blueprint, while an object is a concrete instance created from that blueprint.
+
+The classes exposed by the Suruga Seiki .NET API generally follow a common structure. Each class provides a constructor that allows an instance of the corresponding class to be created and initialized, providing access to its associated functionality. The classes also expose a set of methods that allow the application to perform specific operations, interact with the platform, and retrieve information.
+
+In addition to constructors and methods, the API uses nested types to organize and facilitate the interaction with related data. These nested types can be used to define a finite set of predefined values through enumerations or to group multiple related values into a structured data type. This organization allows related pieces of information to be handled as a single entity rather than as individual parameters.
+
+%=======================================
+\section{Profile class}
+\label{sec:profile_class}
+%=======================================
+
+The \texttt{SurugaSeiki.Motion.Profile} class illustrates this structure. Its methods provide the operations required to configure, control, and monitor
+the profiling process. Some methods interact with the nested types by receiving them as input parameters or returning them as output values. For example, \texttt{Start()} and \texttt{Stop()} return an \texttt{ErrorCode}, \texttt{GetProfileStatus()} returns a \texttt{Status}, while \texttt{SetProfile()} receives a \texttt{ProfileParameter} and \texttt{RequestProfileData()} returns a \texttt{ProfileData}.
+
+The nested types associated with the \texttt{Profile} class support different aspects of the profiling functionality. The \texttt{ProfileParameter} and \texttt{ProfileData} types are structured data types used to encapsulate, respectively, the profiling configuration parameters and the acquired measurement data. In contrast, \texttt{Status} and \texttt{ErrorCode} are enumerations that define a finite set of predefined values representing the current state of the profiling operation and the error conditions returned by the API.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{apisuruga/EsquemaGeneralClases.png}
-    \caption{Pendiente.}
-    %\label{fig:frontDA1000}
+    \includegraphics[width=1\textwidth]{apisuruga/ProfileClass.png}
+    \caption{Structure of the \texttt{Profile} class, showing its constructor, profiling methods, and nested types for configuration parameters, acquired data, status information, and error codes.}
+    %\label{fig:ProfileClass}
 \end{figure}
 
 
-%=======================================
-\section{Clase Alignment}
-
-\IfFileExists{anexos/Alignment.txt}{%
-    \lstinputlisting[style=apiText]{anexos/Alignment.txt}
+\IfFileExists{anexos/Profile.txt}{%
+    \lstinputlisting[style=apiText]{anexos/Profile.txt}
 }{%
-    \lstinputlisting[style=apiText]{../anexos/Alignment.txt}
+    \lstinputlisting[style=apiText]{../anexos/Profile.txt}
 }
 
 %=======================================
-\section{Clase AngleAdjustment}
-
-\IfFileExists{anexos/AngleAdjustment.txt}{%
-    \lstinputlisting[style=apiText]{anexos/AngleAdjustment.txt}
-}{%
-    \lstinputlisting[style=apiText]{../anexos/AngleAdjustment.txt}
-}
-
+\section{System class}
+\label{sec:system_class}
 %=======================================
-\section{Clase Axis2D}
 
-\IfFileExists{anexos/Axis2D.txt}{%
-    \lstinputlisting[style=apiText]{anexos/Axis2D.txt}
-}{%
-    \lstinputlisting[style=apiText]{../anexos/Axis2D.txt}
-}
+Having introduced the general structure of the Suruga Seiki .NET API through the \texttt{Profile} class, we will now review the \texttt{System} class, which provides a broader interface to the Suruga Seiki platform. While \texttt{Profile} is focused on the configuration, execution, and monitoring of profiling operations, \texttt{System} provides access to general system-level information and functionality.
 
-%=======================================
-\section{Clase Axis3D}
+Unlike the other API classes described in this section, the \texttt{System} class does not expose a public constructor in the API interface. Instead, the API provides access to a system instance through the \texttt{Instance} property. This instance is then used by the Python wrapper developed in this work to configure and communicate with the Suruga Seiki controller.
 
-\IfFileExists{anexos/Axis3D.txt}{%
-    \lstinputlisting[style=apiText]{anexos/Axis3D.txt}
-}{%
-    \lstinputlisting[style=apiText]{../anexos/Axis3D.txt}
-}
+Overall, the \texttt{System} class provides the basic functions required to establish and monitor communication with the Suruga Seiki controller. Its functionality can be grouped into three main aspects: connection management through \texttt{GetInstance()}, \texttt{SetAddress()}, and \texttt{Connected}; system error monitoring through \texttt{IsError()} and \texttt{GetErrorCode()}; and safety-state monitoring through \texttt{IsEmergencyAsserted()}. These functions provide the foundation on which the higher-level classes and routines used by the application can interact with the controller.
 
-%=======================================
-\section{Clase AxisComponents}
-
-\IfFileExists{anexos/AxisComponents.txt}{%
-    \lstinputlisting[style=apiText]{anexos/AxisComponents.txt}
-}{%
-    \lstinputlisting[style=apiText]{../anexos/AxisComponents.txt}
-}
-
-%=======================================
-\section{Clase ErrorLog}
-
-\IfFileExists{anexos/ErrorLog.txt}{%
-    \lstinputlisting[style=apiText]{anexos/ErrorLog.txt}
-}{%
-    \lstinputlisting[style=apiText]{../anexos/ErrorLog.txt}
-}
-
-%=======================================
-\section{Clase IO}
-
-\IfFileExists{anexos/IO.txt}{%
-    \lstinputlisting[style=apiText]{anexos/IO.txt}
-}{%
-    \lstinputlisting[style=apiText]{../anexos/IO.txt}
-}
-
-%=======================================
-\section{Clase PowerMeter}
-
-\IfFileExists{anexos/PowerMeter.txt}{%
-    \lstinputlisting[style=apiText]{anexos/PowerMeter.txt}
-}{%
-    \lstinputlisting[style=apiText]{../anexos/PowerMeter.txt}
-}
-
-%=======================================
-\section{Clase System}
 
 \IfFileExists{anexos/System.txt}{%
     \lstinputlisting[style=apiText]{anexos/System.txt}
 }{%
     \lstinputlisting[style=apiText]{../anexos/System.txt}
 }
+
+
+
+
+
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.8\textwidth]{apisuruga/EsquemaGeneralClases.png}
+%     \caption{Pendiente.}
+%     %\label{fig:frontDA1000}
+% \end{figure}
+
+
+
+
+% %=======================================
+% \section{Clase Alignment}
+
+% \IfFileExists{anexos/Alignment.txt}{%
+%     \lstinputlisting[style=apiText]{anexos/Alignment.txt}
+% }{%
+%     \lstinputlisting[style=apiText]{../anexos/Alignment.txt}
+% }
+
+% %=======================================
+% \section{Clase AngleAdjustment}
+
+% \IfFileExists{anexos/AngleAdjustment.txt}{%
+%     \lstinputlisting[style=apiText]{anexos/AngleAdjustment.txt}
+% }{%
+%     \lstinputlisting[style=apiText]{../anexos/AngleAdjustment.txt}
+% }
+
+% %=======================================
+% \section{Clase Axis2D}
+
+% \IfFileExists{anexos/Axis2D.txt}{%
+%     \lstinputlisting[style=apiText]{anexos/Axis2D.txt}
+% }{%
+%     \lstinputlisting[style=apiText]{../anexos/Axis2D.txt}
+% }
+
+% %=======================================
+% \section{Clase Axis3D}
+
+% \IfFileExists{anexos/Axis3D.txt}{%
+%     \lstinputlisting[style=apiText]{anexos/Axis3D.txt}
+% }{%
+%     \lstinputlisting[style=apiText]{../anexos/Axis3D.txt}
+% }
+
+% %=======================================
+% \section{Clase AxisComponents}
+
+% \IfFileExists{anexos/AxisComponents.txt}{%
+%     \lstinputlisting[style=apiText]{anexos/AxisComponents.txt}
+% }{%
+%     \lstinputlisting[style=apiText]{../anexos/AxisComponents.txt}
+% }
+
+% %=======================================
+% \section{Clase ErrorLog}
+
+% \IfFileExists{anexos/ErrorLog.txt}{%
+%     \lstinputlisting[style=apiText]{anexos/ErrorLog.txt}
+% }{%
+%     \lstinputlisting[style=apiText]{../anexos/ErrorLog.txt}
+% }
+
+% %=======================================
+% \section{Clase IO}
+
+% \IfFileExists{anexos/IO.txt}{%
+%     \lstinputlisting[style=apiText]{anexos/IO.txt}
+% }{%
+%     \lstinputlisting[style=apiText]{../anexos/IO.txt}
+% }
+
+% %=======================================
+% \section{Clase PowerMeter}
+
+% \IfFileExists{anexos/PowerMeter.txt}{%
+%     \lstinputlisting[style=apiText]{anexos/PowerMeter.txt}
+% }{%
+%     \lstinputlisting[style=apiText]{../anexos/PowerMeter.txt}
+% }
+
+
 
 % \section{Referencia generada}
 
